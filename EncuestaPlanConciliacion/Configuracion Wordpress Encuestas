@@ -1,0 +1,44 @@
+Configuracion Wordpress Encuestas
+Usuario BBDD: huetorve_encuest
+Contraseña usuario BBDD: 3MV.$)nhC~wn
+Usuario Wordpress: AytoInformatica
+Contraseña usuario Wordpress: rd2dc3po.andaluc1@
+
+
+Aspectos generales del cuestionario
+Todos los códigos a cada respuesta no aparecen en el cuestionario
+En todas las preguntas que tendría que contestar el encuestado/a, si no son  respondidas el código para el fichero de daros en ese campo es 99.
+
+La preguntas que no les salte al encuestado/a porque no proceda hacérsele quedan los campos vacíos en el fichero de datos
+
+Tipo de preguntas para el cuestionario
+
+P1.- Para empezar, ¿podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general? 
+Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.
+
+P2.- En caso de que uno de los dos miembros de la pareja tenga que trabajar menos de forma remunerada, para ocuparse de las tareas del hogar y el cuidado de los hijos/as o familiares dependientes, ¿quién cree que debería ser? 
+- El hombre  (código 1)
+- La mujer   (código 2)
+- Cualquiera de ellos, depende de otros factores (quién gane menos, tenga un trabajo más precario)  (código 3)
+
+P3.- ¿Cuál es su situación laboral actual?
+- Trabajando (incluya si está de baja) (código 1) (Si se elige esta opción pasa la P3.a)		 
+- Jubilado/a o pensionista (anteriormente ha trabajado) (código 2) 
+- Jubilado/a o pensionista (anteriormente no ha trabajado) (código 3)
+- Desempleado/a, busca primer empleo	 (código 4)		 
+- Desempleado/a, ha trabajado antes (código 5)			 	 
+- Estudiante (código 6)					 
+- Realiza las principales tareas en el hogar (código 7)				 
+- Otra, (¿cuál?) (código 8) Si se elige esta opción hay un Con un cuadro de texto en el que pueda escribir (25 caracteres)
+
+P3a.- Está trabajando como:
+- Asalariado/a (trabajador/a por cuenta ajena) (código 1)
+- Empresario/a o profesional con asalariados/as (código 2)
+- Profesional o trabajador/a autónomo/a (sin asalariados/as) (código 3)
+
+P4.- Aproximadamente, ¿cuántas horas dedica usted a la semana a las tareas del hogar)
+ANOTAR nº de horas:
+
+P5.- ¿En qué provincia reside habitualmente usted ? (Desplegable de todos municipios de España, en el que esté por defecto Granada).
+
+P6.- ¿En qué municipio reside habitualmente usted? (Desplegable de los municipios de Granada, en el que esté por defecto Huétor Vega).

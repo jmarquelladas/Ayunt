@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Descripción: Pruebas de efectos con javascript para reloj de intervenciones
+Versión 0.1
+Fecha de inicio: 12/04/2017 
+Fecha de finalización: 
+Autor: José Miguel Arquelladas
+Email: jmaruiz@gmail.com
+Twitter: @jmarquelladas
+
+Se necesita realizar una cuenta atrás de un tiempo a establecer en un reloj analógico 
+
+Ejemplo: realizar una cuenta atrás de 5 minutos
+
+	La circunferencia del reloj es de 360 grados
+	5 minutos en segundos son 300 segundos (5minutosx60seg/minuto)
+	Por cada segundo hay que hallar cuantos grados hay que avanzar, por consiguiente:
+	Hay que recorrer 360 grados en 300 segundos -> 360/300=1,2 grados/segundo
+
+	El sistema preguntará el tiempo a establecer en la cuenta atrás y si no están traducidos a segundos deberá de pasarlos a esta medida.
+
+-->
+
+<html>
+<head>
+	<title>Intervenciones</title>
+	<meta charset="UTF-8" >
+	<meta name="Control de intervenciones" content="Reloj cuenta atras para control de intervenciones">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="Jose Miguel Arquelladas">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="estilo.css" type="text/css" rel="stylesheet"/>
+
+	<!-- Incluimos las bibliotecas para animar SVG con Snap.svg y GreenSock -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
+
+	<!-- Inicio código de JQuery -->
+	<script type="text/javascript">
+	window.onload = function(){
+
+	var s = Snap("#svgOut");
+	var circunferencia1 = s.circle(151,152,75);
+	var circunferencia2 = s.circle(151,152,5);
+	circunferencia2.attr('fill': 'red');
+
+	};
+	</script>
+
+</head>
+<body>
+	<svg id="svgOut"></svg>
+</body>
+</html>

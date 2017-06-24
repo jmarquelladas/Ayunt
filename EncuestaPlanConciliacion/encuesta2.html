@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Plan de Conciliación de la vida personal y laboral</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+	<div class="w3-container">
+		<h1>Encuesta</h1>
+		<p>Ayuntamiento de Huétor Vega</p>
+		<p>Porcentaje de ...</p>
+		<div class="w3-border">
+			<div class="w3-red" style="height:24px; width:5%; text-align:center">5%</div>
+		</div>
+
+		<div class="w3-row">
+			<a href="javascript:void(0)" onclick="abrirOpcion(event, 'inicio');">
+				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Inicio</div>
+			</a>
+			<a href="javascript:void(0)" onclick="abrirOpcion(event, 'trabajo');">
+				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Trabajo</div>
+			</a>
+			<a href="javascript:void(0)" onclick="abrirOpcion(event, 'familia');">
+				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Familia</div>
+			</a>
+		</div>
+
+		<div id="inicio" class="w3-container opc" style="display: none">
+			<h2>Inicio</h2>
+			<p>Parte del formulario de opciones de inicio</p>
+			<form class="w3-container w3-card-4">
+				<p>P1.- Para empezar, ¿podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.</p>
+				<p>
+					<input class="w3-radio" type="radio" name="0" value="0">
+					<label>0 -</label>
+					<input class="w3-radio" type="radio" name="1" value="1">
+					<label>1 -</label>
+					<input class="w3-radio" type="radio" name="2" value="2">
+					<label>2 -</label>
+					<input class="w3-radio" type="radio" name="3" value="3">
+					<label>3 -</label>
+					<input class="w3-radio" type="radio" name="4" value="4">
+					<label>4 -</label>
+					<input class="w3-radio" type="radio" name="5" value="5">
+					<label>5 -</label>
+					<input class="w3-radio" type="radio" name="6" value="6">
+					<label>6 -</label>
+					<input class="w3-radio" type="radio" name="7" value="7">
+					<label>7 -</label>
+					<input class="w3-radio" type="radio" name="8" value="8">
+					<label>8 -</label>
+					<input class="w3-radio" type="radio" name="9" value="9">
+					<label>9 -</label>
+					<input class="w3-radio" type="radio" name="10" value="10">
+					<label>10</label>
+				</p>
+			</form>
+		</div>
+
+		<div id="trabajo" class="w3-container opc" style="display: none">
+			<h2>Trabajo</h2>
+			<p>Parte del formulario de opciones de trabajo</p>
+		</div>
+
+		<div id="familia" class="w3-container opc" style="display: none">
+			<h2>Inicio</h2>
+			<p>Parte del formulario de opciones de familia</p>
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript">
+	function abrirOpcion(evt, opcion) {
+		var i, x, tablinks;
+		var x = document.getElementsByClassName("opc");
+		for (i = 0; i < x.length; i++) {
+			x[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < x.length; i++ ) {
+			tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+		}
+
+		document.getElementById(opcion).style.display = "block";
+		evt.currentTarget.firstElementChild.className += " w3-border-red";
+	}
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+Descripción: Pruebas de efectos con javascript para reloj de intervenciones
+Versión 1.0
+Fecha de inicio: 12/04/2017 
+Fecha de finalización: 
+Autor: José Miguel Arquelladas
+Email: jmaruiz@gmail.com
+Twitter: @jmarquelladas
+
+Se necesita realizar una cuenta atrás de un tiempo a establecer en un reloj analógico 
+
+Ejemplo: realizar una cuenta atrás de 5 minutos
+
+	La circunferencia del reloj es de 360 grados
+	5 minutos en segundos son 300 segundos (5minutosx60seg/minuto)
+	Por cada segundo hay que hacer conocer cuantos grados hay que avanzar, por consiguiente:
+	Hay que recorrer 360 grados en 300 segundos -> 360/300=1,2 grados/segundo
+
+	El sistema preguntará el tiempo a establecer en la cuenta atrás y si no están traducidos a segundos deberá de pasarlos a esta medida.
+
+-->
+<html>
+<head>
+	<title>Intervenciones</title>
+	<meta charset="UTF-8" >
+	<meta name="Control de intervenciones" content="Reloj cuenta atras para control de intervenciones">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="Jose Miguel Arquelladas">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="estilo.css" type="text/css" rel="stylesheet"/>
+
+	<!-- Por ahora JQuery no se está utilizando, pero dejo la librería por si es necesario -->
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous">
+
+	<script type="text/javascript">
+	function miFuncion() { // Función básica de ejemplo de modificación de texto en la página
+		document.getElementById("prueba").innerHTML = "¡¡ Hola desde Javascript !!";
+		var tipodocumento = document.doctype.name;
+		document.getElementById('nombredoc').innerHTML = "Tipo de documento: " + tipodocumento;
+	}
+	</script>
+
+</head>
+<body>
+	<div>
+		<h1>Control de intervenciones</h1>
+		<h3 id="prueba">Pulsa el botón Inicio</p>
+		<h2 id="nombredoc">Tipo de documento: </h2>
+		<h2 id="horaSistema">Inicio, espere ...</h2>
+		<button type="button" onclick="manecilla()">Inicio</button>
+		<button type="button" onclick="clearInterval(intervalo)">Parar efecto intermitente</button>
+	</div>
+	
+	<svg width="540" height="540">
+		<circle id="circuloReloj" cx="260" cy="260" r="250" stroke="blue" stroke-width="15" fill="red"/>
+		<circle id="centroSegundero" cx="260" cy="260" r="15" fill="yellow"/>
+		<line id="segundero" x1="260" y1="260" x2="260" y2="17" stroke="yellow" stroke-width="5"/>
+		Lo sentimos, este navegador no soporta la tecnología SVG de HTLM5
+	</svg>
+
+	<script type="text/javascript">
+		var tiempoIntervecionSegundos = 300; // Prueba de 5 minutos. Este dato luego se pedirá en la misma app.
+		var angulo = 90;
+		var intervalo = setInterval(manecilla(), 1000);
+
+		function manecillaV2() {
+			// Coger datos de posicion del segundero
+			
+		}
+
+		function manecilla(){
+			var objetoAgujaReloj = document.getElementById("segundero");
+			var gradosDesplazamiento = 360 / tiempoIntervecionSegundos;
+			var angulo = 90 - gradosDesplazamiento;
+			//alert(angulo);
+			//alert("Radianes: " + Math.sin(angulo));
+			//alert("Coseno de " + angulo + " : " + Math.cos(angulo));
+			//alert("Seno de " + angulo + " : " + Math.sin(angulo));
+			//alert("Seno de 120: " + Math.sin(120));
+			//alert("Operacion = " + (2*Math.sin(120)));
+
+			// Ejemplo bueno: Si tenemos radio y ángulo podemos hallar las coordenadas polares
+			// Si el radio es 233 y queremos poner el segundero a 37° entonces
+			// x = r * cos37° = x¹
+			// y = r * sen37° = y¹
+
+
+			var x1 = 260;
+			var y1 = 260;
+			var x2 = 260;
+			var y2 = 17;
+
+			x2 = x1 - x2;
+			y2 = y1 - y2;
+
+			x2 = 243 * (Math.cos(angulo));
+			y2 = 243 * (Math.sin(angulo));
+
+			// Reconvertir coordenadas
+			//x2 = x2 + 260;
+			//y2 = y2 + 17;
+
+			alert("Coordenada x: " + x2);
+			alert("Coordenada y: " + y2);
+
+		}
+
+		// Mostramos la hora por segundos
+		var hora = new Date();
+		document.getElementById("horaSistema").innerHTML = hora.toLocaleTimeString();
+	</script>
+
+</body>
+</html>

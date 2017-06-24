@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+Descripción: Pruebas de efectos con javascript para reloj de intervenciones
+Versión 1.0
+Fecha de inicio: 12/04/2017 
+Fecha de finalización: 
+Autor: José Miguel Arquelladas
+Email: jmaruiz@gmail.com
+Twitter: @jmarquelladas
+
+Se necesita realizar una cuenta atrás de un tiempo a establecer en un reloj analógico 
+
+Ejemplo: realizar una cuenta atrás de 5 minutos
+
+	La circunferencia del reloj es de 360 grados
+	5 minutos en segundos son 300 segundos (5minutosx60seg/minuto)
+	Por cada segundo hay que hacer conocer cuantos grados hay que avanzar, por consiguiente:
+	Hay que recorrer 360 grados en 300 segundos -> 360/300=1,2 grados/segundo
+
+	El sistema preguntará el tiempo a establecer en la cuenta atrás y si no están traducidos a segundos deberá de pasarlos a esta medida.
+
+-->
+<html>
+<head>
+	<title>Intervenciones</title>
+	<meta charset="UTF-8" >
+	<meta name="Control de intervenciones" content="Reloj cuenta atras para control de intervenciones">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="Jose Miguel Arquelladas">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+	</style>
+	<script type="text/javascript">
+
+	function miFuncion() { // Función básica de modificación de texto en la página
+		document.getElementById("prueba").innerHTML = "¡¡ Hola desde Javascript !!";
+		var tipodocumento = document.doctype.name;
+		document.getElementById('nombredoc').innerHTML = "Tipo de documento: " + tipodocumento;
+	}
+
+	</script>
+</head>
+<body>
+	<div>
+		<h1>Control de intervenciones</h1>
+		<h3 id="prueba">Pulsa el botón Inicio</p>
+		<h2 id="nombredoc">Tipo de documento: </h2>
+		<h2 id="horaSistema">Inicio, espere ...</h2>
+		<button type="button" onclick="haciendoBlinking()">Inicio</button>
+		<button type="button" onclick="clearInterval(intervalo)">Parar efecto intermitente</button>
+	</div>
+	<svg width="550" height="550">
+		<circle id="relojCapa1" cx="260" cy="260" r="250" stroke="blue" stroke-width="15" fill="red"/>
+		Lo sentimos, este navegador no soporta la tecnología SVG de HTLM5
+	</svg>
+	<script type="text/javascript">
+		var tiempoIntervecionSegundos = 300; // 5 minutos en segundos
+		var intervalo = setInterval(haciendoBlinking, 3000);
+		function haciendoBlinking() { // Esto funciona !!!!
+			var objetoReloj = document.getElementById("relojCapa1"); // Guardamos en variable el objeto circle
+			var colorFondo = objetoReloj.getAttribute("fill"); // Guardamos en variable el atributo de relleno
+			if (colorFondo == "red") { // Comprobamos el valor
+				// Hacemos los cambios en los atributos
+				objetoReloj.setAttribute("fill", "blue");
+				objetoReloj.setAttribute("stroke", "red");
+			} else {
+				// Hacemos los cambios en los atributos
+				objetoReloj.setAttribute("fill", "red");
+				objetoReloj.setAttribute("stroke", "blue");
+			}
+			// Mostramos la hora por segundos
+			var hora = new Date();
+			document.getElementById("horaSistema").innerHTML = "Hora: " + hora.toLocaleTimeString();
+		}
+	</script>
+</body>
+</html>
