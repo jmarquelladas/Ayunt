@@ -5,6 +5,22 @@
 	<title>Plan de Conciliación de la vida personal y laboral</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		// comprobador quitado --> alert($('#trabajando').css('display'));
+		
+		$('input[name=p3').click(function(){
+			// comprobador quitado --> alert($(this).val());
+			if($(this).val() == 1) {
+				$('#trabajando').css('display','block');
+			} else {
+				$('#trabajando').css('display','none');
+			}
+		});
+	});
+	</script>
+
 </head>
 <body>
 	<div class="w3-container">
@@ -30,33 +46,141 @@
 		<div id="inicio" class="w3-container opc" style="display: none">
 			<h2>Inicio</h2>
 			<p>Parte del formulario de opciones de inicio</p>
-			<form class="w3-container w3-card-4">
+			<form id="encuesta" class="w3-container w3-card-4">
+				<!-- P1 -->
 				<p>P1.- Para empezar, ¿podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.</p>
-				<p>
-					<input class="w3-radio" type="radio" name="0" value="0">
-					<label>0 -</label>
-					<input class="w3-radio" type="radio" name="1" value="1">
-					<label>1 -</label>
-					<input class="w3-radio" type="radio" name="2" value="2">
-					<label>2 -</label>
-					<input class="w3-radio" type="radio" name="3" value="3">
-					<label>3 -</label>
-					<input class="w3-radio" type="radio" name="4" value="4">
-					<label>4 -</label>
-					<input class="w3-radio" type="radio" name="5" value="5">
-					<label>5 -</label>
-					<input class="w3-radio" type="radio" name="6" value="6">
-					<label>6 -</label>
-					<input class="w3-radio" type="radio" name="7" value="7">
-					<label>7 -</label>
-					<input class="w3-radio" type="radio" name="8" value="8">
-					<label>8 -</label>
-					<input class="w3-radio" type="radio" name="9" value="9">
-					<label>9 -</label>
-					<input class="w3-radio" type="radio" name="10" value="10">
-					<label>10</label>
-				</p>
+				<input type="hidden" name="p1" value="99">
+				<div class="w3-responsive"> 
+					<table class="w3-table w3-bordered w3-centered">
+						<tr>
+							<td>0</td>
+							<td>1</td>
+							<td>2</td>
+							<td>3</td>
+							<td>4</td>
+							<td>5</td>
+							<td>6</td>
+							<td>7</td>
+							<td>8</td>
+							<td>9</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="0">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="1">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="2">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="3">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="4">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="5">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="6">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="7">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="8">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="9">
+							</td>
+							<td>
+								<input class="w3-radio" type="radio" name="p1" value="10">
+							</td>
+						</tr>
+					</table>
+				</div>
+				<!-- P1 -->
+
+				<!-- P2 -->
+				<p>P2.- En caso de que uno de los dos miembros de la pareja tenga que trabajar menos de forma remunerada, para ocuparse de las tareas del hogar y el cuidado de los hijos/as o familiares dependientes, ¿quién cree que debería ser?</p>
+				<input type="hidden" name="p2" value="99">
+				<div class="w3-responsive">
+					<input class="w3-radio" type="radio" name="p2" value="1" >
+					<label>El hombre</label>
+					<input class="w3-radio" type="radio" name="p2" value="2" >
+					<label>La mujer</label>
+					<input class="w3-radio" type="radio" name="p2" value="3" >
+					<label>Cualquiera de ellos, depende de otros factores (quién gane menos, tenga un trabajo más precario)</label>
+				</div>
+				<!-- P2 -->
+
+				<!-- P3 -->
+				<p>P3.- ¿Cuál es su situación laboral actual?</p>
+				<input type="hidden" name="p3" value="99">
+				<div class="w3-responsive">
+					<ul class="w3-ul">
+						<li>
+							<input id="trabaja" class="w3-radio" type="radio" name="p3" value="1">
+							<label>Trabajando (incluya si está de baja)</label>
+							<!-- P3a -->
+							<div id="trabajando" class="w3-container w3-card-4" style="display: none;" >
+								<p>P3a.- Está trabajando como:</p>
+								<input type="hidden" name="p3a" value="99">
+								<div class="w3-responsive">
+									<ul class="w3-ul">
+										<li>
+											<input class="w3-radio" type="radio" name="p3a" value="1" >
+											<label>Asalariado/a (trabajador/a por cuenta ajena)</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="p3a" value="2" >
+											<label>Empresario/a o profesional con asalariados/as</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="p3a" value="3" >
+											<label>Profesional o trabajador/a autónomo/a (sin asalariados/as)</label>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- P3a -->
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="2" >
+							<label>Jubilado/a o pensionista (anteriormente ha trabajado)</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="3" >
+							<label>Jubilado/a o pensionista (anteriormente no ha trabajado)</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="4" >
+							<label>Desempleado/a, busca primer empleo</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="5" >
+							<label>Desempleado/a, ha trabajado antes</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="6" >
+							<label>Estudiante</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="7" >
+							<label>Realiza las principales tareas en el hogar</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="p3" value="8" >
+							<label>Otra, (¿cuál?)</label>
+						</li>
+					</ul>
+				</div>
+				<!-- P3 -->
 			</form>
+			<p>Siguiente....</p>
 		</div>
 
 		<div id="trabajo" class="w3-container opc" style="display: none">
@@ -88,7 +212,6 @@
 		evt.currentTarget.firstElementChild.className += " w3-border-red";
 	}
 	</script>
-
 
 </body>
 </html>
