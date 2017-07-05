@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+
 	<script type="text/javascript">
 	$(document).ready(function(){
 		// comprobador quitado --> alert($('#trabajando').css('display'));
@@ -16,8 +17,18 @@
 				$('#trabajando').css('display','block');
 			} else {
 				$('#trabajando').css('display','none');
+				$('input[name=p3a]').each(function() {
+					if(this.checked) $(this).prop("checked", false);
+				});
+			}
+			
+			if($(this).val() == 8) {
+				$('#otraSituacionLaboral').css('display','block');
+			} else {
+				$('#otraSituacionLaboral').css('display','none');
 			}
 		});
+
 	});
 	</script>
 
@@ -33,7 +44,7 @@
 
 		<div class="w3-row">
 			<a href="javascript:void(0)" onclick="abrirOpcion(event, 'inicio');">
-				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Inicio</div>
+				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red">Inicio</div>
 			</a>
 			<a href="javascript:void(0)" onclick="abrirOpcion(event, 'trabajo');">
 				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Trabajo</div>
@@ -43,12 +54,12 @@
 			</a>
 		</div>
 
-		<div id="inicio" class="w3-container opc" style="display: none">
+		<div id="inicio" class="w3-container opc" style="display: block">
 			<h2>Inicio</h2>
 			<p>Parte del formulario de opciones de inicio</p>
 			<form id="encuesta" class="w3-container w3-card-4">
 				<!-- P1 -->
-				<p>P1.- Para empezar, ¿podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.</p>
+				<b>P1.- Para empezar, ¿podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general?<br/>Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.</b><br/>
 				<input type="hidden" name="p1" value="99">
 				<div class="w3-responsive"> 
 					<table class="w3-table w3-bordered w3-centered">
@@ -102,10 +113,11 @@
 						</tr>
 					</table>
 				</div>
+				<br/>
 				<!-- P1 -->
 
 				<!-- P2 -->
-				<p>P2.- En caso de que uno de los dos miembros de la pareja tenga que trabajar menos de forma remunerada, para ocuparse de las tareas del hogar y el cuidado de los hijos/as o familiares dependientes, ¿quién cree que debería ser?</p>
+				<b>P2.- En caso de que uno de los dos miembros de la pareja tenga que trabajar menos de forma remunerada, para ocuparse de las tareas del hogar y el cuidado de los hijos/as o familiares dependientes, ¿quién cree que debería ser?</b><br/>
 				<input type="hidden" name="p2" value="99">
 				<div class="w3-responsive">
 					<input class="w3-radio" type="radio" name="p2" value="1" >
@@ -115,10 +127,11 @@
 					<input class="w3-radio" type="radio" name="p2" value="3" >
 					<label>Cualquiera de ellos, depende de otros factores (quién gane menos, tenga un trabajo más precario)</label>
 				</div>
+				<br/>
 				<!-- P2 -->
 
 				<!-- P3 -->
-				<p>P3.- ¿Cuál es su situación laboral actual?</p>
+				<b>P3.- ¿Cuál es su situación laboral actual?</b><br/>
 				<input type="hidden" name="p3" value="99">
 				<div class="w3-responsive">
 					<ul class="w3-ul">
@@ -175,12 +188,67 @@
 						<li>
 							<input class="w3-radio" type="radio" name="p3" value="8" >
 							<label>Otra, (¿cuál?)</label>
+							<!-- P3b -->
+							<div id="otraSituacionLaboral" class="w3-container w3-card-4" style="display: none;" >
+								<div class="w3-responsive">
+									<ul class="w3-ul">
+										<li>
+											<input class="w3-input w3-border" type="text" name="sitLab" maxlength="25" placeholder="Máximo 25 caractéres">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- P3b -->
 						</li>
 					</ul>
 				</div>
+				<br/>
 				<!-- P3 -->
+
+				<!-- P4 
+				IMPORTANTE *************************************************
+				Hay que poner un patrón para que solo pueda insertar numeros
+
+				-->
+				<b>P4.- Aproximadamente, ¿cuántas horas dedica usted a la semana a las tareas del hogar?</b>
+				<input type="hidden" name="p4" value="99">
+				<div class="w3-responsive">
+					<input class="w3-input w3-border" type="text" name="p4" maxlength="3">
+				</div>
+				<br/>
+				<!-- P4 -->
+
+				<!-- P5 -->
+				<b>P5.- ¿En qué provincia reside habitualmente usted?</b>
+				<div class="w3-responsive">
+					<select class="w3-select w3-border" name="prov">
+						<option value="18">Granada</option>
+						<option value="01">Provincia 01</option>
+						<option value="02">Provincia 02</option>
+						<option value="03">Provincia 03</option>
+						<option value="04">Provincia 04</option>
+						<option value="05">Provincia 05</option>
+					</select>
+				</div>
+				<br/>
+				<!-- P5 -->
+
+				<!-- P6 -->
+				<b>P6.- ¿En qué municipio reside habitualmente usted?</b>
+				<div class="w3-responsive">
+					<select class="w3-select w3-border" name="prov">
+						<option value="101">Huétor Vega</option>
+						<option value="01">Municipio 01</option>
+						<option value="02">Municipio 02</option>
+						<option value="03">Municipio 03</option>
+						<option value="04">Municipio 04</option>
+						<option value="05">Municipio 05</option>
+					</select>
+				</div>
+				<br/>
+				<!-- P6 -->
+
 			</form>
-			<p>Siguiente....</p>
 		</div>
 
 		<div id="trabajo" class="w3-container opc" style="display: none">
@@ -195,7 +263,7 @@
 
 	</div>
 
-
+	<!-- Código Javascript -->
 	<script type="text/javascript">
 	function abrirOpcion(evt, opcion) {
 		var i, x, tablinks;
@@ -205,7 +273,7 @@
 		}
 		tablinks = document.getElementsByClassName("tablink");
 		for (i = 0; i < x.length; i++ ) {
-			tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+			tablinks[i].className = tablinks[i].className.replace("w3-border-red", "");
 		}
 
 		document.getElementById(opcion).style.display = "block";
