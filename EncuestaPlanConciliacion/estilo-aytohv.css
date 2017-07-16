@@ -1,0 +1,18 @@
+@font-face {
+	font-style: normal;
+	font-weight: normal;
+}
+
+.ayto-titulo {
+
+}
+
+.ayto-titulo img {
+	width: 60px;
+	height: 105px;
+	margin: 5px;
+}
+
+.ayto-nombre a {
+	text-decoration-line: none;
+}
