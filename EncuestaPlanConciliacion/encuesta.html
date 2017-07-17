@@ -13,6 +13,18 @@
 	// JQuery para mostrar o ocultar preguntas del formulario
 	$(document).ready(function(){
 		
+		// Para pregunta P9
+		$('input[name=p9]').click(function(){
+			if($(this).val() == 1) { // Tiene cónyuge y misma vivienda
+				$('#p9abc').css('display', 'block');
+			} else {
+				$('#p9abc').css('display', 'none');
+				$('input[name=p9').each(function(){
+					if($(this).checked) $(this).prop("checked", false);
+				});
+			}
+		}); // Pregunta P9
+
 		// Para pregunta P10
 		$('input[name=p10').click(function(){
 			if($(this).val() == 1) { // Trabajando
@@ -20,7 +32,7 @@
 			} else {
 				$('#trabajando').css('display','none');
 				$('input[name=p10a]').each(function() {
-					if(this.checked) $(this).prop("checked", false);
+					if($(this).checked) $(this).prop("checked", false);
 				});
 			}
 			
@@ -38,8 +50,8 @@
 
 <body>
 	<div class="w3-container">
-		<header id="cabecera">
-			<div id="encabezado" class="w3-row w3-light-grey">
+		<header id="cabecera" class="w3-container">
+			<div id="encabezado" class="w3-row">
 				<div class="ayto-titulo w3-half w3-container">
 					<div class="ayto-titulo w3-row">
 						<div class="w3-col w3-container" style="width: 100px">
@@ -49,17 +61,17 @@
 						<div class="ayto-nombre w3-rest w3-container">
 							<a href="http://www.huetorvega.es" title="Accede al portal del Ayuntamiento de Huétor Vega">
 							<h3><b>Ayuntamiento de Huétor Vega</b></h3></a>
-							<h6>Frontera entre la nieve y la vega</h6>
+							<sub>Frontera entre la Nieve y la Vega</sub>
 						</div>
 					</div>
 				</div>
 
-				<div id="logoPortal" class="w3-half w3-container"><h2 class="w3-right">Portal Web de encuentas</h2></div>
+				<div id="logoPortal" class="w3-half w3-container"><h2 class="w3-right">Portal de encuentas</h2></div>
 			</div>
 
-			<div id="menu" class="w3-container w3-light-grey">
+			<div id="menu" class="w3-container">
 				<!-- Menú del Portal -->
-				<h3 class="w3-center" style="text-shadow: 1px 1px 0 #444">Encuesta Conciliación</h3>
+				<h2 class="w3-center">Encuesta Conciliación de la vida familiar, personal y laboral</h2>
 			</div>
 
 			<div id="miga_pan">
@@ -72,11 +84,25 @@
 		<div id="formEncConcilia">
 
 			<!-- Apartados del formulario -->
+			<!-- Barra de porcentaje -->
+			<!-- Aún no está acabada 
 			<p>Porcentaje de realizado:</p>
 			<div class="w3-progress-container">
 				<div id="barProgreso" class="w3-progressbar w3-red" style="width:50%"></div>
 			</div>
+			-->
 
+			<!-- Nueva version de apartados 17/07/2017 -->
+			<div id="apartados" class="w3-container w3-row w3-light-grey">
+				<div id="apaInicio" class="w3-col w3-padding w3-center w3-blue" style="width:20%">Inicio <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaValoraciones" class="w3-col w3-padding w3-center w3-red" style="width:20%">Valoraciones <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaTareas" class="w3-col w3-padding w3-center w3-red" style="width:20%">Tareas <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaSitLaboral" class="w3-col w3-padding w3-center w3-red" style="width:20%">Situación laboral <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaFin" class="w3-col w3-padding w3-center w3-red" style="width:20%">Fin <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+			</div>
+
+
+			<!-- Quitado por modificaciones 17/07/2017
 			<div id="apartados" class="w3-row">
 				<a href="javascript:void(0)" onclick="abrirOpcion(event, 'inicio');">
 					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red" style="width: 20%">Inicio <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
@@ -94,10 +120,11 @@
 					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding" style="width: 20%">Otros</div>
 				</a>
 			</div>
+			-->
 
 			<form id="EncConcilia" class="w3-container w3-card-4" >
 
-			<!-- Pestaña 1 -->
+			<!-- Pestaña 1 - Inicio -->
 			<div id="inicio" class="w3-container opc" style="display: block">
 				<h2>Lugar de residencia habitual</h2>
 				<!-- S10.1 -->
@@ -131,12 +158,12 @@
 				
 				<p>
 					<div class="w3-container w3-bar">
-						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'valoraciones');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
+						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'inicio');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
 					</div>
 				</p>
 			</div>
 
-			<!-- Pestaña 2 -->
+			<!-- Pestaña 2 - Valoraciones -->
 			<div id="valoraciones" class="w3-container opc" style="display: none">
 				<h2>Valoraciones personales</h2>
 				<!-- P1 -->
@@ -602,14 +629,16 @@
 
 				<p>
 					<div class="w3-container w3-bar">
+						<!-- Deshabilitado el botón "Anterior"
 						<a class="w3-button w3-red w3-round w3-left" href="javascript:void(0)" onclick="abrirOpcion(event, 'inicio');"><i class="fa fa-arrow-left" style="font-size:16px"></i> Anterior</a>
-						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'tareas');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
+						-->
+						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'valoraciones');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
 					</div>
 				</p>
 
 			</div>
 
-			<!-- Pestaña 3 -->
+			<!-- Pestaña 3 - Tareas -->
 			<div id="tareas" class="w3-container opc" style="display: none">
 				<h2>Reparto de Tareas</h2>
 				<!-- P3 -->
@@ -748,8 +777,9 @@
 							<label>Tiene cónyuge o pareja y comparten la misma vivienda</label>
 							<!-- Si la opcion anterior con value="1" es la seleccionada hay que pasar a P9a, P9b y P9c, o sea que aparezcan automáticamente para ser contestadas -->
 							<!-- P9a P9b y P9c -->
-							<div id="p9abc" class="w3-container w3-card-4" style="display: block;">
+							<div id="p9abc" class="w3-container w3-card-4" style="display: none;">
 								<!-- P9a -->
+								<br/>
 								<b>P9a. Aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja a las tareas domésticas, sin incluir el cuidado de los/as hijos/as ni actividades de ocio?</b>
 								<input type="hidden" name="p9a" value="99">
 								<div class="w3-responsive">
@@ -792,6 +822,7 @@
 									</ul>
 								</div>
 								<!-- P9c -->
+								<br/>
 							</div>
 							<!-- P9a P9b y P9c -->
 						</li>
@@ -809,14 +840,16 @@
 
 				<p>
 					<div class="w3-container w3-bar">
+						<!-- Deshabilitado el botón "Anterior"
 						<a class="w3-button w3-red w3-round w3-left" href="javascript:void(0)" onclick="abrirOpcion(event, 'valoraciones');"><i class="fa fa-arrow-left" style="font-size:16px"></i> Anterior</a>
-						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'sitLaboral');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
+						-->
+						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'tareas');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
 					</div>
 				</p>
 
 			</div>
 
-			<!-- Pestaña 4 -->
+			<!-- Pestaña 4 - Situación laboral -->
 			<div id="sitLaboral" class="w3-container opc" style="display: none">
 				<h2>Situación Laboral</h2>
 				<!-- P10 -->
@@ -831,6 +864,7 @@
 
 							<!-- T10a a T10d -->
 							<div id="trabajando" class="w3-container w3-card-4" style="display: none;">
+								<br/>
 								<b>T10a. ¿Con qué frecuencia ha experimentado Ud., durante los últimos tres meses, algunas de las situaciones que se describen a continuación?</b>
 								<input type="hidden" name="T10a" value="99">
 								<div class="w3-responsive">
@@ -987,6 +1021,7 @@
 								T10d11. Algún otro tipo de servicio social. ¿Cuál? (Abrir cuadro de texto)
 								-->
 								</div>
+								<br/>
 							</div> <!-- Fin T10a a T10d -->
 						</li>
 						<li>
@@ -1024,22 +1059,26 @@
 
 				<p>
 					<div class="w3-container w3-bar">
+						<!-- Deshabilitado el botón "Anterior"
 						<a class="w3-button w3-red w3-round w3-left" href="javascript:void(0)" onclick="abrirOpcion(event, 'tareas');"><i class="fa fa-arrow-left" style="font-size:16px"></i> Anterior</a>
-						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'otros');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
+						-->
+						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'sitLaboral');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
 					</div>
 				</p>					
 
 			</div>
 
-			<!-- Pestaña 5 -->
-			<div id="otros" class="w3-container opc" style="display: none">
+			<!-- Pestaña 5 Otros y final -->
+			<div id="fin" class="w3-container opc" style="display: none">
 				<h2>Otros</h2>
 				<!-- Preguntas -->
 				<!-- Preguntas -->
 
 				<div class="w3-container w3-bar">
+					<!-- Deshabilitado el botón "Anterior"
 					<a class="w3-button w3-red w3-round w3-left" href="javascript:void(0)" onclick="abrirOpcion(event, 'sitLaboral');"><i class="fa fa-arrow-left" style="font-size:16px"></i> Anterior</a>
-					<a class="w3-button w3-green w3-round w3-right" href="#">Finalizar <i class="fa fa-check" style="font-size:16px"></i></a>
+					-->
+					<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'fin');">Finalizar <i class="fa fa-check" style="font-size:16px"></i></a>
 				</div>
 
 				<p></p>
@@ -1062,6 +1101,7 @@
 
 	<!-- Código Javascript para cambio de pestañas-->
 	<script type="text/javascript">
+	/** Quitado por nueva version 17/07/17
 	function abrirOpcion(evt, opcion) {
 		var i, x, tablinks;
 		var x = document.getElementsByClassName("opc");
@@ -1076,6 +1116,28 @@
 
 		document.getElementById(opcion).style.display = "block";
 		evt.currentTarget.firstElementChild.className += " w3-border-red";
+	}
+	**/
+
+	// Version nueva 17/07/2017
+	function abrirOpcion(evt, opcion) {
+		if(opcion == "inicio") {
+			document.getElementById('inicio').style.display = "none";
+			document.getElementById('valoraciones').style.display = "block";
+			document.getElementById('apaInicio').className = document.getElementById('apaInicio').className.replace('w3-blue', 'w3-green');
+			document.getElementById('apaValoraciones').className = document.getElementById('apaValoraciones').className.replace('w3-red', 'w3-blue');
+		} else if(opcion == "valoraciones") {
+			document.getElementById('valoraciones').style.display = "none";
+			document.getElementById('tareas').style.display = "block";
+			document.getElementById('apaValoraciones').className = document.getElementById('apaValoraciones').className.replace('w3-blue', 'w3-green');
+			document.getElementById('apaTareas').className = document.getElementById('apaTareas').className.replace('w3-red', 'w3-blue');
+		} else if(opcion == "tareas") {
+
+		} else if(opcion == "sitLaboral") {
+
+		} else if(opcion == "fin") {
+			// Quizás nada ya que es el submit del formulario, el cual enviá datos del formulario y los guarda en tabla de la bbdd.
+		}
 	}
 	</script>
 
