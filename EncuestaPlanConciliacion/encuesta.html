@@ -36,12 +36,33 @@
 				});
 			}
 			
-			if($(this).val() == 8) { // Otra
-				$('#otraSituacionLaboral').css('display','block');
+			if($(this).val() == 2 || $(this).val() == 3) { // Jubilados
+				$('#jubil').css('display','block');
 			} else {
-				$('#otraSituacionLaboral').css('display','none');
+				$('#jubil').css('display','none');
+			}
+
+			if($(this).val() >= 4 && $(this).val() <= 7) { // Desempleados, estudiantes, Ama/o de casa
+				$('#desemEstudAma').css('display','block');
+			} else {
+				$('#desemEstudAma').css('display','none');
+			}
+
+			if($(this).val() == 8) { // Otra
+				$('#otraSit').css('display','block');
+			} else {
+				$('#otraSit').css('display','none');
 			}
 		}); // Pregunta P10
+
+		// Para pregunta D10a
+		$('input[name=d10a]').click(function(){
+			if($(this).val() == 2) { // NO ha tratado de encontrar empleo
+				$('#motivoNoBuscar').css('display', 'block');
+			} else {
+				$('#motivoNoBuscar').css('display', 'none');
+			}
+		}); // Pregunta D10a
 
 	});
 	</script>
@@ -49,7 +70,7 @@
 </head>
 
 <body>
-	<div class="w3-container">
+	<div id="principal" class="w3-container">
 		<header id="cabecera" class="w3-container">
 			<div id="encabezado" class="w3-row">
 				<div class="ayto-titulo w3-half w3-container">
@@ -60,18 +81,18 @@
 
 						<div class="ayto-nombre w3-rest w3-container">
 							<a href="http://www.huetorvega.es" title="Accede al portal del Ayuntamiento de Huétor Vega">
-							<h3><b>Ayuntamiento de Huétor Vega</b></h3></a>
+							<h4><b>Ayuntamiento de Huétor Vega</b></h4></a>
 							<sub>Frontera entre la Nieve y la Vega</sub>
 						</div>
 					</div>
 				</div>
 
-				<div id="logoPortal" class="w3-half w3-container"><h2 class="w3-right">Portal de encuentas</h2></div>
+				<div id="logoPortal" class="w3-half w3-container"><h2 class="w3-right">Portal de Encuestas</h2></div>
 			</div>
 
 			<div id="menu" class="w3-container">
 				<!-- Menú del Portal -->
-				<h2 class="w3-center">Encuesta Conciliación de la vida familiar, personal y laboral</h2>
+				<h3 class="w3-center">Encuesta Conciliación de la vida familiar, personal y laboral</h3>
 			</div>
 
 			<div id="miga_pan">
@@ -101,32 +122,11 @@
 				<div id="apaFin" class="w3-col w3-padding w3-center w3-red" style="width:20%">Fin <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
 			</div>
 
-
-			<!-- Quitado por modificaciones 17/07/2017
-			<div id="apartados" class="w3-row">
-				<a href="javascript:void(0)" onclick="abrirOpcion(event, 'inicio');">
-					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red" style="width: 20%">Inicio <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				</a>
-				<a href="javascript:void(0)" onclick="abrirOpcion(event, 'valoraciones');">
-					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding" style="width: 20%">Valoraciones <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				</a>
-				<a href="javascript:void(0)" onclick="abrirOpcion(event, 'tareas');">
-					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding" style="width: 20%">Tareas <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				</a>
-				<a href="javascript:void(0)" onclick="abrirOpcion(event, 'sitLaboral');">
-					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding" style="width: 20%">Situación Laboral <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				</a>
-				<a href="javascript:void(0)" onclick="abrirOpcion(event, 'otros');">
-					<div class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding" style="width: 20%">Otros</div>
-				</a>
-			</div>
-			-->
-
 			<form id="EncConcilia" class="w3-container w3-card-4" >
 
 			<!-- Pestaña 1 - Inicio -->
 			<div id="inicio" class="w3-container opc" style="display: block">
-				<h2>Lugar de residencia habitual</h2>
+				<h3>Lugar de residencia habitual</h3>
 				<!-- S10.1 -->
 				<b>S10.1- ¿En qué provincia reside habitualmente usted?</b>
 				<div class="w3-responsive">
@@ -165,7 +165,7 @@
 
 			<!-- Pestaña 2 - Valoraciones -->
 			<div id="valoraciones" class="w3-container opc" style="display: none">
-				<h2>Valoraciones personales</h2>
+				<h3>Valoraciones personales</h3>
 				<!-- P1 -->
 				<b>P1.- ¿Podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.</b><br/>
 				<input type="hidden" name="p1" value="99">
@@ -640,7 +640,7 @@
 
 			<!-- Pestaña 3 - Tareas -->
 			<div id="tareas" class="w3-container opc" style="display: none">
-				<h2>Reparto de Tareas</h2>
+				<h3>Reparto de Tareas</h3>
 				<!-- P3 -->
 				<b>P3. En caso de que uno de los dos miembros de la pareja tenga que trabajar menos de forma remunerada, para ocuparse de las tareas del hogar y el cuidado de los hijos/as o familiares dependientes, ¿quién cree que debería ser? </b><br/>
 				<input type="hidden" name="p3" value="99">
@@ -767,6 +767,7 @@
 				<br/><br/>
 				<!-- P8 -->
 
+
 				<!-- P9 -->
 				<b>P9. ¿En cuál de las siguientes situaciones se encuentra Ud. en la actualidad?</b><br/>
 				<input type="hidden" name="P9" value="99">
@@ -777,54 +778,6 @@
 							<label>Tiene cónyuge o pareja y comparten la misma vivienda</label>
 							<!-- Si la opcion anterior con value="1" es la seleccionada hay que pasar a P9a, P9b y P9c, o sea que aparezcan automáticamente para ser contestadas -->
 							<!-- P9a P9b y P9c -->
-							<div id="p9abc" class="w3-container w3-card-4" style="display: none;">
-								<!-- P9a -->
-								<br/>
-								<b>P9a. Aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja a las tareas domésticas, sin incluir el cuidado de los/as hijos/as ni actividades de ocio?</b>
-								<input type="hidden" name="p9a" value="99">
-								<div class="w3-responsive">
-									<input class="w3-input w3-border" type="text" name="p9a" maxlength="3">
-								</div><br/>
-								<!-- P9a -->
-								<!-- P9b -->
-								<b>P9b. Y, aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja al cuidado de algún miembro de la familia.<br/>(p. ej. niños, ancianos o personas con discapacidad)?</b>
-								<input type="hidden" name="p9b" value="99">
-								<div class="w3-responsive">
-									<input class="w3-input w3-border" type="text" name="p9b" maxlength="3">
-								</div>
-								<br/>
-								<!-- P9b -->
-								<!-- P9c -->
-								<b>P.9c. ¿Cuál de las frases siguientes describe mejor la forma en que se reparten las tareas domésticas Ud. y su cónyuge/pareja?</b>
-								<input type="hidden" name="p9c" value="99">
-								<div class="w3-responsive">
-									<ul class="w3-ul">
-										<li>
-											<input class="w3-radio" type="radio" name="p9c" value="1" >
-											<label>Ud. hace mucho menos de lo que le corresponde</label>
-										</li>
-										<li>
-											<input class="w3-radio" type="radio" name="p9c" value="2" >
-											<label>Ud. hace algo menos de lo que le corresponde</label>
-										</li>
-										<li>
-											<input class="w3-radio" type="radio" name="p9c" value="3" >
-											<label>Ud. hace más o menos lo que le corresponde</label>
-										</li>
-										<li>
-											<input class="w3-radio" type="radio" name="p9c" value="4" >
-											<label>Ud. hace algo más de lo que le corresponde</label>
-										</li>
-										<li>
-											<input class="w3-radio" type="radio" name="p9c" value="5" >
-											<label>Ud. hace mucho más de lo que le corresponde</label>
-										</li>
-									</ul>
-								</div>
-								<!-- P9c -->
-								<br/>
-							</div>
-							<!-- P9a P9b y P9c -->
 						</li>
 						<li>
 							<input class="w3-radio" type="radio" name="p9" value="2" >
@@ -834,9 +787,56 @@
 							<input class="w3-radio" type="radio" name="p9" value="3" >
 							<label>No tiene cónyuge ni pareja</label>
 						</li>
+						<div id="p9abc" class="w3-container w3-card-4" style="display: none;">
+							<!-- P9a -->
+							<br/>
+							<b>P9a. Aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja a las tareas domésticas, sin incluir el cuidado de los/as hijos/as ni actividades de ocio?</b>
+							<input type="hidden" name="p9a" value="99">
+							<div class="w3-responsive">
+								<input class="w3-input w3-border" type="text" name="p9a" maxlength="3">
+							</div><br/>
+							<!-- P9a -->
+							<!-- P9b -->
+							<b>P9b. Y, aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja al cuidado de algún miembro de la familia.<br/>(p. ej. niños, ancianos o personas con discapacidad)?</b>
+							<input type="hidden" name="p9b" value="99">
+							<div class="w3-responsive">
+								<input class="w3-input w3-border" type="text" name="p9b" maxlength="3">
+							</div>
+							<br/>
+							<!-- P9b -->
+							<!-- P9c -->
+							<b>P.9c. ¿Cuál de las frases siguientes describe mejor la forma en que se reparten las tareas domésticas Ud. y su cónyuge/pareja?</b>
+							<input type="hidden" name="p9c" value="99">
+							<div class="w3-responsive">
+								<ul class="w3-ul">
+									<li>
+										<input class="w3-radio" type="radio" name="p9c" value="1" >
+										<label>Ud. hace mucho menos de lo que le corresponde</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="p9c" value="2" >
+										<label>Ud. hace algo menos de lo que le corresponde</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="p9c" value="3" >
+										<label>Ud. hace más o menos lo que le corresponde</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="p9c" value="4" >
+										<label>Ud. hace algo más de lo que le corresponde</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="p9c" value="5" >
+										<label>Ud. hace mucho más de lo que le corresponde</label>
+									</li>
+								</ul>
+							</div> <!-- P9c -->
+							<br/>
+						</div> <!-- P9a P9b y P9c -->
 					</ul>
 				</div>
 				<!-- P9 -->
+
 
 				<p>
 					<div class="w3-container w3-bar">
@@ -846,8 +846,7 @@
 						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'tareas');">Siguiente <i class="fa fa-arrow-right" style="font-size:16px"></i></a>
 					</div>
 				</p>
-
-			</div>
+			</div> <!-- Pestaña 3 - Tareas -->
 
 			<!-- Pestaña 4 - Situación laboral -->
 			<div id="sitLaboral" class="w3-container opc" style="display: none">
@@ -861,168 +860,6 @@
 							<input id="trabaja" class="w3-radio" type="radio" name="p10" value="1">
 							<label>Trabajando (incluya si está de baja)</label><br/>
 							<!-- Si la opcion anterior con value="1" es la seleccionada hay que pasar a T10a, o sea que aparezcan automáticamente para ser contestadas -->
-
-							<!-- T10a a T10d -->
-							<div id="trabajando" class="w3-container w3-card-4" style="display: none;">
-								<br/>
-								<b>T10a. ¿Con qué frecuencia ha experimentado Ud., durante los últimos tres meses, algunas de las situaciones que se describen a continuación?</b>
-								<input type="hidden" name="T10a" value="99">
-								<div class="w3-responsive">
-									<ul class="w3-ul">
-										<li>
-											<input class="w3-check" type="checkbox">
-											<label>T10a.1. Ha vuelto del trabajo demasiado cansada/o para hacer las tareas de la casa.</label>
-											<input type="hidden" name="T10a1" value="99">
-											<div class="w3-responsive">
-												<ul class="w3-ul">
-													<li>
-														<input class="w3-radio" type="radio" name="T10a1" value="1" >
-														<label>Varias veces a la semana</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a1" value="2" >
-														<label>Varias veces al mes</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a1" value="3" >
-														<label>Varias veces al año</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a1" value="4" >
-														<label>Nunca</label>
-													</li>
-												</ul>
-											</div>
-										</li>
-										<li>
-											<input class="w3-check" type="checkbox">
-											<b>T10a.2. Le ha resultado difícil cumplir con sus responsabilidades familiares, debido al tiempo que había dedica do a su trabajo (remunerado).</b>
-											<input type="hidden" name="T10a2" value="99">
-											<div class="w3-responsive">
-												<ul class="w3-ul">
-													<li>
-														<input class="w3-radio" type="radio" name="T10a2" value="1" >
-														<label>Varias veces a la semana</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a2" value="2" >
-														<label>Varias veces al mes</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a2" value="3" >
-														<label>Varias veces al año</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a2" value="4" >
-														<label>Nunca</label>
-													</li>
-												</ul>
-											</div>
-										</li>
-										<li>
-											<input class="w3-check" type="checkbox">
-											<b>T10a.3. Ha llegado al trabajo demasiado cansada/o por haber tenido que hacer las tareas de la casa.</b>
-											<input type="hidden" name="T10a3" value="99">
-											<div class="w3-responsive">
-												<ul class="w3-ul">
-													<li>
-														<input class="w3-radio" type="radio" name="T10a3" value="1" >
-														<label>Varias veces a la semana</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a3" value="2" >
-														<label>Varias veces al mes</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a3" value="3" >
-														<label>Varias veces al año</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a3" value="4" >
-														<label>Nunca</label>
-													</li>
-												</ul>
-											</div>
-										</li>
-										<li>
-											<input class="w3-check" type="checkbox">
-											<b>T10a.4. Ha tenido dificultades para concentrarse en su trabajo, debido a sus responsabilidades familiares.</b>
-											<input type="hidden" name="T10a4" value="99">
-											<div class="w3-responsive">
-												<ul class="w3-ul">
-													<li>
-														<input class="w3-radio" type="radio" name="T10a4" value="1" >
-														<label>Varias veces a la semana</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a4" value="2" >
-														<label>Varias veces al mes</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a4" value="3" >
-														<label>Varias veces al año</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a4" value="4" >
-														<label>Nunca</label>
-													</li>
-												</ul>
-											</div>
-										</li>
-										<li>
-											<input class="w3-check" type="checkbox">
-											<b>T10a.5. Le ha resultado difícil poder realizar sus aficiones, (deporte, cine, lectura, quedar con amigos/as…) debido al tiempo que había dedicado a su trabajo o responsabilidades familiares.</b>
-											<input type="hidden" name="T10a5" value="99">
-											<div class="w3-responsive">
-												<ul class="w3-ul">
-													<li>
-														<input class="w3-radio" type="radio" name="T10a5" value="1" >
-														<label>Varias veces a la semana</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a5" value="2" >
-														<label>Varias veces al mes</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a5" value="3" >
-														<label>Varias veces al año</label>
-													</li>
-													<li>
-														<input class="w3-radio" type="radio" name="T10a5" value="4" >
-														<label>Nunca</label>
-													</li>
-												</ul>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<b>T10b. ¿Qué tipo de jornada laboral tiene?</b>
-								<input type="hidden" name="T10b" value="99">
-								<div class="w3-responsive">
-								</div>
-								<b>T10c. ¿Qué tipo de trabajo tiene?</b>
-								<input type="hidden" name="T10c" value="99">
-								<div class="w3-responsive">
-								</div>
-								<b>T10d. ¿Su empresa u organización proporciona a los /as trabajadores/as algunas de las siguientes medidas?</b>
-								<input type="hidden" name="T10d" value="99">
-								<div class="w3-responsive">
-								<!--
-								T10d1. Ayudas para la vivienda
-								T10d2. Planes de pensiones o complementos de pensiones
-								T10d3. Ayudas para la formación (disposición de días, flexibilidad horaria, ayudas económicas…)
-								T10d4. Comedor para empleados/as o ayudas para manutención
-								T10d5. Ayudas de transporte
-								T10d6. Ayudas para gastos en área de salud
-								T10d7. Ayudas para enseñanza de hijos/as o familiares
-								T10d8. Guarderías o ayudas para guarderías
-								T10d9. Ofertas de ocio
-								T10d10. Flexibilidad horaria
-								T10d11. Algún otro tipo de servicio social. ¿Cuál? (Abrir cuadro de texto)
-								-->
-								</div>
-								<br/>
-							</div> <!-- Fin T10a a T10d -->
 						</li>
 						<li>
 							<input id="jubilado" class="w3-radio" type="radio" name="p10" value="2" >
@@ -1051,8 +888,290 @@
 						<li>
 							<input id="desem-estud" class="w3-radio" type="radio" name="p10" value="8" >
 							<label>Otro</label>
-							<div class="w3-responsive">
 						</li>
+
+						<!-- T10a a T10d -->
+						<div id="trabajando" class="w3-container w3-card-4" style="display: none;">
+							<br/>
+							<b>T10a. ¿Con qué frecuencia ha experimentado Ud., durante los últimos tres meses, algunas de las situaciones que se describen a continuación?</b>
+							<input type="hidden" name="T10a" value="99">
+							<div class="w3-responsive">
+								<ul class="w3-ul">
+									<li>
+										<input class="w3-check" type="checkbox">
+										<label>T10a.1. Ha vuelto del trabajo demasiado cansada/o para hacer las tareas de la casa.</label>
+										<input type="hidden" name="T10a1" value="99">
+										<div class="w3-responsive">
+											<ul class="w3-ul">
+												<li>
+													<input class="w3-radio" type="radio" name="T10a1" value="1" >
+													<label>Varias veces a la semana</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a1" value="2" >
+													<label>Varias veces al mes</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a1" value="3" >
+													<label>Varias veces al año</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a1" value="4" >
+													<label>Nunca</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox">
+										<b>T10a.2. Le ha resultado difícil cumplir con sus responsabilidades familiares, debido al tiempo que había dedica do a su trabajo (remunerado).</b>
+										<input type="hidden" name="T10a2" value="99">
+										<div class="w3-responsive">
+											<ul class="w3-ul">
+												<li>
+													<input class="w3-radio" type="radio" name="T10a2" value="1" >
+													<label>Varias veces a la semana</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a2" value="2" >
+													<label>Varias veces al mes</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a2" value="3" >
+													<label>Varias veces al año</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a2" value="4" >
+													<label>Nunca</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox">
+										<b>T10a.3. Ha llegado al trabajo demasiado cansada/o por haber tenido que hacer las tareas de la casa.</b>
+										<input type="hidden" name="T10a3" value="99">
+										<div class="w3-responsive">
+											<ul class="w3-ul">
+												<li>
+													<input class="w3-radio" type="radio" name="T10a3" value="1" >
+													<label>Varias veces a la semana</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a3" value="2" >
+													<label>Varias veces al mes</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a3" value="3" >
+													<label>Varias veces al año</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a3" value="4" >
+													<label>Nunca</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox">
+										<b>T10a.4. Ha tenido dificultades para concentrarse en su trabajo, debido a sus responsabilidades familiares.</b>
+										<input type="hidden" name="T10a4" value="99">
+										<div class="w3-responsive">
+											<ul class="w3-ul">
+												<li>
+													<input class="w3-radio" type="radio" name="T10a4" value="1" >
+													<label>Varias veces a la semana</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a4" value="2" >
+													<label>Varias veces al mes</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a4" value="3" >
+													<label>Varias veces al año</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a4" value="4" >
+													<label>Nunca</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox">
+										<b>T10a.5. Le ha resultado difícil poder realizar sus aficiones, (deporte, cine, lectura, quedar con amigos/as…) debido al tiempo que había dedicado a su trabajo o responsabilidades familiares.</b>
+										<input type="hidden" name="T10a5" value="99">
+										<div class="w3-responsive">
+											<ul class="w3-ul">
+												<li>
+													<input class="w3-radio" type="radio" name="T10a5" value="1" >
+													<label>Varias veces a la semana</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a5" value="2" >
+													<label>Varias veces al mes</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a5" value="3" >
+													<label>Varias veces al año</label>
+												</li>
+												<li>
+													<input class="w3-radio" type="radio" name="T10a5" value="4" >
+													<label>Nunca</label>
+												</li>
+											</ul>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<br/>
+							<b>T10b. ¿Qué tipo de jornada laboral tiene?</b>
+							<input type="hidden" name="T10b" value="99">
+							<div class="w3-responsive">
+							</div>
+							<b>T10c. ¿Qué tipo de trabajo tiene?</b>
+							<input type="hidden" name="T10c" value="99">
+							<div class="w3-responsive">
+							</div>
+							<b>T10d. ¿Su empresa u organización proporciona a los /as trabajadores/as algunas de las siguientes medidas?</b>
+							<input type="hidden" name="T10d" value="99">
+							<div class="w3-responsive">
+							<!--
+							T10d1. Ayudas para la vivienda
+							T10d2. Planes de pensiones o complementos de pensiones
+							T10d3. Ayudas para la formación (disposición de días, flexibilidad horaria, ayudas económicas…)
+							T10d4. Comedor para empleados/as o ayudas para manutención
+							T10d5. Ayudas de transporte
+							T10d6. Ayudas para gastos en área de salud
+							T10d7. Ayudas para enseñanza de hijos/as o familiares
+							T10d8. Guarderías o ayudas para guarderías
+							T10d9. Ofertas de ocio
+							T10d10. Flexibilidad horaria
+							T10d11. Algún otro tipo de servicio social. ¿Cuál? (Abrir cuadro de texto)
+							-->
+							</div>
+							<br/>
+						</div> <!-- Fin T10a a T10d -->
+
+						<!-- J10a  -->
+						<div id="jubil" class="w3-container w3-card-4" style="display: none;">
+							<br/>
+							<b>J10a.- ¿Podría decirme en qué medida se siente Ud. necesario para que su familia más próxima pueda conciliar la vida laboral, familiar y personal? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente innecesario/a” y el 10 que está “completamente necesario/a”</b><br/>
+							<input type="hidden" name="j10a" value="99">
+							<div class="w3-responsive"> 
+								<table class="w3-table w3-bordered w3-centered">
+									<tr>
+										<td>0</td>
+										<td>1</td>
+										<td>2</td>
+										<td>3</td>
+										<td>4</td>
+										<td>5</td>
+										<td>6</td>
+										<td>7</td>
+										<td>8</td>
+										<td>9</td>
+										<td>10</td>
+									</tr>
+									<tr>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="0">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="1">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="2">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="3">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="4">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="5">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="6">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="7">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="8">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="9">
+										</td>
+										<td>
+											<input class="w3-radio" type="radio" name="j10a" value="10">
+										</td>
+									</tr>
+								</table>
+							</div>
+							<br/><br/>
+						</div> <!-- Fin J10a -->
+
+						<!-- D10a  -->
+						<div id="desemEstudAma" class="w3-container w3-card-4" style="display: none;">
+							<br/>
+							<b>D10a. Pensando en las cuatro últimas semanas, ¿ha tratado de encontrar algún empleo?</b>
+							<div class="w3-responsive">
+								<ul class="w3-ul">
+									<li>
+										<input class="w3-radio" type="radio" name="d10a" value="1" >
+										<label>Si</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="d10a" value="2" >
+										<label>No</label>
+									</li>
+								</ul>
+							</div>
+
+							<div id="motivoNoBuscar" class="w3-container w3-card-4" style="display: none;">
+								<br/>
+								<b>D10a2. ¿Cuál es el PRINCIPAL MOTIVO por el que no ha tratado de buscar empleo en las últimas semanas?</b>
+								<div class="w3-responsive">
+									<ul class="w3-ul">
+										<li>
+											<input class="w3-radio" type="radio" name="d10a2" value="1" >
+											<label>Cree que no lo va a encontrar</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a2" value="2" >
+											<label>Está afectado por una regulación de empleo</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a2" value="3" >
+											<label>Por enfermedad o incapacidad propia</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a2" value="4" >
+											<label>Cuidado de hijos/as o personas dependientes</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a2" value="5" >
+											<label>Tiene otras responsabilidades familiares o personales</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a2" value="6" >
+											<label>Está cursando estudios o recibiendo formación o bien pretende comenzarlos</label>
+										</li>
+									</ul>
+								</div><br/>
+							</div>
+						</div> <!-- Fin D10a -->
+
+						<!-- P108  -->
+						<div id="otraSit" class="w3-container w3-card-4" style="display: none;">
+							<br/>
+							<div class="w3-responsive">
+								<b>¿Cuál?</b>
+								<input class="w3-input w3-border" type="text" name="p108" placeholder="Máximo 25 caractéres" maxlength="25">
+							</div><br/>
+						</div> <!-- Fin P108 -->
 					</ul>
 				</div>
 				<!-- P10a -->
@@ -1070,18 +1189,29 @@
 
 			<!-- Pestaña 5 Otros y final -->
 			<div id="fin" class="w3-container opc" style="display: none">
-				<h2>Otros</h2>
+				<h2>Otros datos de interés</h2>
 				<!-- Preguntas -->
-				<!-- Preguntas -->
-
-				<div class="w3-container w3-bar">
-					<!-- Deshabilitado el botón "Anterior"
-					<a class="w3-button w3-red w3-round w3-left" href="javascript:void(0)" onclick="abrirOpcion(event, 'sitLaboral');"><i class="fa fa-arrow-left" style="font-size:16px"></i> Anterior</a>
-					-->
-					<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'fin');">Finalizar <i class="fa fa-check" style="font-size:16px"></i></a>
+				<!-- S1 -->
+				<b>S1. Pregunta</b>
+				<input type="hidden">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<input> [TODO TODO TODO]
+						</li>
+					</ul>
 				</div>
+				<!-- S1 -->
+				<!-- Preguntas -->
 
-				<p></p>
+				<p>
+					<div class="w3-container w3-bar">
+						<!-- Deshabilitado el botón "Anterior"
+						<a class="w3-button w3-red w3-round w3-left" href="javascript:void(0)" onclick="abrirOpcion(event, 'sitLaboral');"><i class="fa fa-arrow-left" style="font-size:16px"></i> Anterior</a>
+						-->
+						<a class="w3-button w3-green w3-round w3-right" href="javascript:void(0)" onclick="abrirOpcion(event, 'fin');">Finalizar <i class="fa fa-check" style="font-size:16px"></i></a>
+					</div>
+				</p>
 
 			</div>
 
@@ -1101,24 +1231,6 @@
 
 	<!-- Código Javascript para cambio de pestañas-->
 	<script type="text/javascript">
-	/** Quitado por nueva version 17/07/17
-	function abrirOpcion(evt, opcion) {
-		var i, x, tablinks;
-		var x = document.getElementsByClassName("opc");
-		for (i = 0; i < x.length; i++) {
-			x[i].style.display = "none";
-		}
-
-		tablinks = document.getElementsByClassName("tablink");
-		for (i = 0; i < x.length; i++ ) {
-			tablinks[i].className = tablinks[i].className.replace("w3-border-red", "");
-		}
-
-		document.getElementById(opcion).style.display = "block";
-		evt.currentTarget.firstElementChild.className += " w3-border-red";
-	}
-	**/
-
 	// Version nueva 17/07/2017
 	function abrirOpcion(evt, opcion) {
 		if(opcion == "inicio") {
@@ -1132,12 +1244,20 @@
 			document.getElementById('apaValoraciones').className = document.getElementById('apaValoraciones').className.replace('w3-blue', 'w3-green');
 			document.getElementById('apaTareas').className = document.getElementById('apaTareas').className.replace('w3-red', 'w3-blue');
 		} else if(opcion == "tareas") {
-
+			document.getElementById('tareas').style.display = "none";
+			document.getElementById('sitLaboral').style.display = "block";
+			document.getElementById('apaTareas').className = document.getElementById('apaTareas').className.replace('w3-blue', 'w3-green');
+			document.getElementById('apaSitLaboral').className = document.getElementById('apaSitLaboral').className.replace('w3-red', 'w3-blue');
 		} else if(opcion == "sitLaboral") {
-
+			document.getElementById('sitLaboral').style.display = "none";
+			document.getElementById('fin').style.display = "block";
+			document.getElementById('apaSitLaboral').className = document.getElementById('apaSitLaboral').className.replace('w3-blue', 'w3-green');
+			document.getElementById('apaFin').className = document.getElementById('apaFin').className.replace('w3-red', 'w3-blue');
 		} else if(opcion == "fin") {
 			// Quizás nada ya que es el submit del formulario, el cual enviá datos del formulario y los guarda en tabla de la bbdd.
 		}
+		// Mostrar el documento desde el principio o desde arriba
+		$('html, body').animate({scrollTop: $('#principal').offset().top},1000);
 	}
 	</script>
 
