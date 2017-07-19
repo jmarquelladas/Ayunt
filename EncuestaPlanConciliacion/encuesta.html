@@ -64,6 +64,27 @@
 			}
 		}); // Pregunta D10a
 
+		// Para pregunta S8
+		$('input[name=s8]').click(function(){
+			if($(this).val() == 2) { // Tiene nacionalidad diferente a la española y tiene que especificarla
+				$('#s82').css('display', 'block');
+			} else {
+				$('#s82').css('display', 'none');
+			}
+		}); // Pregunta S8
+
+
+		// TO DO no funciona aún
+		// Para pregunta T10b
+		$('input[name=t10b]').click(function(){
+			if($(this).checked) { // Tiene nacionalidad diferente a la española y tiene que especificarla
+				$('#t10b').css('display', 'block');
+			} else {
+				$('#t10b').css('display', 'none');
+			}
+		}); // Pregunta S8
+
+
 	});
 	</script>
 
@@ -126,7 +147,8 @@
 
 			<!-- Pestaña 1 - Inicio -->
 			<div id="inicio" class="w3-container opc" style="display: block">
-				<h3>Lugar de residencia habitual</h3>
+				<br/>
+				<h3>Lugar de residencia habitual</h3><br/>
 				<!-- S10.1 -->
 				<b>S10.1- ¿En qué provincia reside habitualmente usted?</b>
 				<div class="w3-responsive">
@@ -165,7 +187,8 @@
 
 			<!-- Pestaña 2 - Valoraciones -->
 			<div id="valoraciones" class="w3-container opc" style="display: none">
-				<h3>Valoraciones personales</h3>
+				<br/>
+				<h3>Valoraciones personales</h3><br/>
 				<!-- P1 -->
 				<b>P1.- ¿Podría decirme en qué medida se siente Ud. satisfecho/a con su vida en general? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente insatisfecho/a” y el 10 que está “completamente satisfecho/a”.</b><br/>
 				<input type="hidden" name="p1" value="99">
@@ -640,7 +663,8 @@
 
 			<!-- Pestaña 3 - Tareas -->
 			<div id="tareas" class="w3-container opc" style="display: none">
-				<h3>Reparto de Tareas</h3>
+				<br/>
+				<h3>Reparto de Tareas</h3><br/>
 				<!-- P3 -->
 				<b>P3. En caso de que uno de los dos miembros de la pareja tenga que trabajar menos de forma remunerada, para ocuparse de las tareas del hogar y el cuidado de los hijos/as o familiares dependientes, ¿quién cree que debería ser? </b><br/>
 				<input type="hidden" name="p3" value="99">
@@ -850,7 +874,8 @@
 
 			<!-- Pestaña 4 - Situación laboral -->
 			<div id="sitLaboral" class="w3-container opc" style="display: none">
-				<h2>Situación Laboral</h2>
+				<br/>
+				<h3>Situación Laboral</h3><br/>
 				<!-- P10 -->
 				<b>P10. ¿Cuál es su situación laboral actual?</b><br/>
 				<input type="hidden" name="p10" value="99">
@@ -1023,33 +1048,112 @@
 										</div>
 									</li>
 								</ul>
-							</div>
-							<br/>
+							</div><br/>
+
 							<b>T10b. ¿Qué tipo de jornada laboral tiene?</b>
 							<input type="hidden" name="T10b" value="99">
 							<div class="w3-responsive">
-							</div>
+								<ul class="w3-ul">
+									<li>
+										<input class="w3-radio" type="radio" name="t10b" value="1">
+										<label>Jornada completa continua</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="t10b" value="2">
+										<label>Jornada completa partida</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="t10b" value="3">
+										<label>Jornada completa reducida</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="t10b" value="4">
+										<label>Jornada parcial</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="t10b" value="5">
+										<label>Otra</label>
+									</li>
+									<li id="t10b" style="display: none;">
+										<label>¿Cuál?</label>
+										<input class="w3-input w3-border" type="text" name="t10b5otra">
+									</li>
+								</ul>
+							</div><br/>
+							<!-- Pregunta T10c -->
 							<b>T10c. ¿Qué tipo de trabajo tiene?</b>
 							<input type="hidden" name="T10c" value="99">
 							<div class="w3-responsive">
-							</div>
-							<b>T10d. ¿Su empresa u organización proporciona a los /as trabajadores/as algunas de las siguientes medidas?</b>
-							<input type="hidden" name="T10d" value="99">
+								<ul class="w3-ul">
+									<li>
+										<input class="w3-radio" type="radio" name="t10c" value="1">
+										<label>Por cuenta ajena</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="t10c" value="2">
+										<label>Por cuenta propia (sin asalariados a su cargo)</label>
+									</li>
+									<li>
+										<input class="w3-radio" type="radio" name="t10c" value="3">
+										<label>Por cuenta propia (con uno o más asalariados a su cargo)</label>
+									</li>
+								</ul>
+							</div> <!-- Pregunta T10c -->
+							<br/>
+							<!-- Pregunta T10d -->
+							<b>T10d. ¿Su empresa u organización proporciona a los /as trabajadores/as algunas de las siguientes medidas?</b><br/>
 							<div class="w3-responsive">
-							<!--
-							T10d1. Ayudas para la vivienda
-							T10d2. Planes de pensiones o complementos de pensiones
-							T10d3. Ayudas para la formación (disposición de días, flexibilidad horaria, ayudas económicas…)
-							T10d4. Comedor para empleados/as o ayudas para manutención
-							T10d5. Ayudas de transporte
-							T10d6. Ayudas para gastos en área de salud
-							T10d7. Ayudas para enseñanza de hijos/as o familiares
-							T10d8. Guarderías o ayudas para guarderías
-							T10d9. Ofertas de ocio
-							T10d10. Flexibilidad horaria
-							T10d11. Algún otro tipo de servicio social. ¿Cuál? (Abrir cuadro de texto)
-							-->
-							</div>
+								<ul class="w3-ul">
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d1">
+										<label>T10d1. Ayudas para la vivienda</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d2">
+										<label>T10d2. Planes de pensiones o complementos de pensiones</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d3">
+										<label>T10d3. Ayudas para la formación (disposición de días, flexibilidad horaria, ayudas económicas…)</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d4">
+										<label>T10d4. Comedor para empleados/as o ayudas para manutención</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d5">
+										<label>T10d5. Ayudas de transporte</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d6">
+										<label>T10d6. Ayudas para gastos en área de salud</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d7">
+										<label>T10d7. Ayudas para enseñanza de hijos/as o familiares</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d8">
+										<label>T10d8. Guarderías o ayudas para guarderías</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d9">
+										<label>T10d9. Ofertas de ocio</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d10">
+										<label>T10d10. Flexibilidad horaria</label>
+									</li>
+									<li>
+										<input class="w3-check" type="checkbox" name="t10d11">
+										<label>T10d11. Algún otro tipo de servicio social.</label>
+									</li>
+									<li id="t10d11" style="display: none;">
+										<label>¿Cuál?</label>
+										<input class="w3-input w3-border" type="text" name="t10d11otro">
+									</li>
+								</ul>
+							</div> <!-- Pregunta T10d -->
 							<br/>
 						</div> <!-- Fin T10a a T10d -->
 
@@ -1130,38 +1234,61 @@
 								</ul>
 							</div>
 
+							<!-- Preguntas Motivo No Buscar -->
 							<div id="motivoNoBuscar" class="w3-container w3-card-4" style="display: none;">
 								<br/>
-								<b>D10a2. ¿Cuál es el PRINCIPAL MOTIVO por el que no ha tratado de buscar empleo en las últimas semanas?</b>
+								<b>D10a1. ¿Cuál es el PRINCIPAL MOTIVO por el que no ha tratado de buscar empleo en las últimas semanas?</b>
+								<div class="w3-responsive">
+									<ul class="w3-ul">
+										<li>
+											<input class="w3-radio" type="radio" name="d10a1" value="1" >
+											<label>Cree que no lo va a encontrar</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a1" value="2" >
+											<label>Está afectado por una regulación de empleo</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a1" value="3" >
+											<label>Por enfermedad o incapacidad propia</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a1" value="4" >
+											<label>Cuidado de hijos/as o personas dependientes</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a1" value="5" >
+											<label>Tiene otras responsabilidades familiares o personales</label>
+										</li>
+										<li>
+											<input class="w3-radio" type="radio" name="d10a1" value="6" >
+											<label>Está cursando estudios o recibiendo formación o bien pretende comenzarlos</label>
+										</li>
+									</ul>
+								</div>
+								<br/>
+								<b>D10a2. Más concretamente, dígame si el motivo de no buscar empleo es alguno de los siguientes:</b>
 								<div class="w3-responsive">
 									<ul class="w3-ul">
 										<li>
 											<input class="w3-radio" type="radio" name="d10a2" value="1" >
-											<label>Cree que no lo va a encontrar</label>
+											<label>Porque no hay servicios adecuados para el cuidado de hijos/as o son demasiado costosos</label>
 										</li>
 										<li>
 											<input class="w3-radio" type="radio" name="d10a2" value="2" >
-											<label>Está afectado por una regulación de empleo</label>
+											<label>Porque no hay servicios adecuados para el cuidado de personas dependientes o son demasiado costosos</label>
 										</li>
 										<li>
 											<input class="w3-radio" type="radio" name="d10a2" value="3" >
-											<label>Por enfermedad o incapacidad propia</label>
+											<label>Los dos anteriores</label>
 										</li>
 										<li>
 											<input class="w3-radio" type="radio" name="d10a2" value="4" >
-											<label>Cuidado de hijos/as o personas dependientes</label>
-										</li>
-										<li>
-											<input class="w3-radio" type="radio" name="d10a2" value="5" >
-											<label>Tiene otras responsabilidades familiares o personales</label>
-										</li>
-										<li>
-											<input class="w3-radio" type="radio" name="d10a2" value="6" >
-											<label>Está cursando estudios o recibiendo formación o bien pretende comenzarlos</label>
+											<label>Ninguno de ellos</label>
 										</li>
 									</ul>
 								</div><br/>
-							</div>
+							</div>	<!-- Preguntas Motivo No Buscar -->					
 						</div> <!-- Fin D10a -->
 
 						<!-- P108  -->
@@ -1189,19 +1316,165 @@
 
 			<!-- Pestaña 5 Otros y final -->
 			<div id="fin" class="w3-container opc" style="display: none">
-				<h2>Otros datos de interés</h2>
+				<br/>
+				<h3>Otros datos de interés</h3><br/>
 				<!-- Preguntas -->
 				<!-- S1 -->
-				<b>S1. Pregunta</b>
-				<input type="hidden">
+				<b>S1. ¿Cuál es su sexo?</b>
+				<input type="hidden" name="s1" value="99">
 				<div class="w3-container">
 					<ul class="w3-ul">
 						<li>
-							<input> [TODO TODO TODO]
+							<input class="w3-radio" type="radio" name="s1" value="1">
+							<label>Hombre</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s1" value="2">
+							<label>Mujer</label>
 						</li>
 					</ul>
-				</div>
+				</div><br/>
 				<!-- S1 -->
+				<!-- S2 -->
+				<b>S2. ¿Podría indicarme cuál es su edad?</b>
+				<input type="hidden" name="s1" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<!-- TO DO Poner desde los 18 hasta los 99 -->
+							<input class="w3-input w3-border" type="text" name="s2">
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S2 -->
+				<!-- S3 -->
+				<b>S3. ¿Cuál es su estado civil?</b>
+				<input type="hidden" name="s3" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<input class="w3-radio" type="radio" name="s3" value="1">
+							<label>Soltero/a</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s3" value="2">
+							<label>Casado/a</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s3" value="3">
+							<label>Conviviendo en pareja</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s3" value="4">
+							<label>Divorciado/a o separado/a</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s3" value="5">
+							<label>Viudo/a</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s3" value="6">
+							<label>Otros</label>
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S3 -->
+				<!-- S4 -->
+				<b>S4. ¿Podría indicarme  el nº de personas que residen en su hogar contando con Ud.?</b>
+				<input type="hidden" name="s4" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<!-- TO DO Poner desde 0 hasta 20 -->
+							<input class="w3-input w3-border" type="text" name="s4">
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S4 -->
+				<!-- S5 -->
+				<b>S5. ¿Cuántos/as hijos/as tiene a su cargo?</b>
+				<input type="hidden" name="s5" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<!-- TO DO Cuadro desplegable desde 0 hasta 9 o más -->
+							<input class="w3-input w3-border" type="text" name="s5">
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S5 -->
+				<!-- S6 -->
+				<b>S6. ¿Cuántas personas dependientes tiene usted a su cargo? (no puede valerse por sí misma y necesita asistencia de alguien o de algo)</b>
+				<input type="hidden" name="s6" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<!-- TO DO Cuadro desplegable desde 0 hasta 9 o más -->
+							<input class="w3-input w3-border" type="text" name="s6">
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S6 -->
+				<!-- S7 -->
+				<b>S7. ¿Podría indicarme qué nivel de estudios terminados tiene Ud.?</b>
+				<input type="hidden" name="s7" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="1">
+							<label>Sin estudios reglados</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="2">
+							<label>Bachiller Elemental, EGB, ESO completa (Graduado escolar)</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="3">
+							<label>Bachiller superior, BUP, Bachiller LOGSE, COU, PREU</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="4">
+							<label>FPI, FP grado medio, Oficialía Industrial o equivalente</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="5">
+							<label>FPII, FP superior, Maestría industrial o equivalente</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="6">
+							<label>Diplomatura, Ingeniería Técnica, 3 cursos aprobados de Licenciatura, Ingeniería o Arquitectura</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="7">
+							<label>Grado, Licenciatura, Arquitectura, Ingeniería o equivalente</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s7" value="8">
+							<label>Estudios de Grado, Master Univ. Oficiales y Doctorado</label>
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S7 -->
+				<!-- S8 -->
+				<b>S8. ¿Le importaría decirme cuál es su nacionalidad?</b>
+				<input type="hidden" name="s8" value="99">
+				<div class="w3-container">
+					<ul class="w3-ul">
+						<li>
+							<input class="w3-radio" type="radio" name="s8" value="1">
+							<label>Española</label>
+						</li>
+						<li>
+							<input class="w3-radio" type="radio" name="s8" value="2">
+							<label>Otra</label>
+						</li>
+						<li id="s82" style="display: none;">
+							<label>¿Cuál?</label>
+							<input class="w3-input w3-border" type="text" name="s82">
+						</li>
+					</ul>
+				</div><br/>
+				<!-- S8 -->
 				<!-- Preguntas -->
 
 				<p>
@@ -1257,7 +1530,7 @@
 			// Quizás nada ya que es el submit del formulario, el cual enviá datos del formulario y los guarda en tabla de la bbdd.
 		}
 		// Mostrar el documento desde el principio o desde arriba
-		$('html, body').animate({scrollTop: $('#principal').offset().top},1000);
+		$('html, body').animate({scrollTop: $('#principal').offset().top},200);
 	}
 	</script>
 
