@@ -74,16 +74,24 @@
 		}); // Pregunta S8
 
 
-		// TO DO no funciona aún
 		// Para pregunta T10b
 		$('input[name=t10b]').click(function(){
-			if($(this).checked) { // Tiene nacionalidad diferente a la española y tiene que especificarla
+			if($(this).val() == 5) { // Tiene nacionalidad diferente a la española y tiene que especificarla
 				$('#t10b').css('display', 'block');
 			} else {
 				$('#t10b').css('display', 'none');
 			}
 		}); // Pregunta S8
 
+
+		// Para pregunta T10d
+		$('input[name=t10d11]').click(function(){
+			if($(this).is(':checked')){
+				$('#t10d11').css('display', 'block');
+			} else {
+				$('#t10d11').css('display', 'none');
+			}
+		});
 
 	});
 	</script>
@@ -136,11 +144,11 @@
 
 			<!-- Nueva version de apartados 17/07/2017 -->
 			<div id="apartados" class="w3-container w3-row w3-light-grey">
-				<div id="apaInicio" class="w3-col w3-padding w3-center w3-blue" style="width:20%">Inicio <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				<div id="apaValoraciones" class="w3-col w3-padding w3-center w3-red" style="width:20%">Valoraciones <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				<div id="apaTareas" class="w3-col w3-padding w3-center w3-red" style="width:20%">Tareas <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				<div id="apaSitLaboral" class="w3-col w3-padding w3-center w3-red" style="width:20%">Situación laboral <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
-				<div id="apaFin" class="w3-col w3-padding w3-center w3-red" style="width:20%">Fin <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaInicio" class="w3-col w3-padding w3-center w3-blue" style="width:20%"><i class="fa fa-circle-o" style="font-size:12px"></i> Inicio <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaValoraciones" class="w3-col w3-padding w3-center w3-red" style="width:20%"><i class="fa fa-circle-o" style="font-size:12px"></i> Valoraciones <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaTareas" class="w3-col w3-padding w3-center w3-red" style="width:20%"><i class="fa fa-circle-o" style="font-size:12px"></i> Tareas <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaSitLaboral" class="w3-col w3-padding w3-center w3-red" style="width:20%"><i class="fa fa-circle-o" style="font-size:12px"></i> Situación laboral <i class="fa fa-angle-double-right" style="font-size:16px"></i></div>
+				<div id="apaFin" class="w3-col w3-padding w3-center w3-red" style="width:20%"><i class="fa fa-circle-o" style="font-size:12px"></i> Fin <i class="fa fa-angle-double-right" style="font-size: "></i></div>
 			</div>
 
 			<form id="EncConcilia" class="w3-container w3-card-4" >
@@ -1076,7 +1084,7 @@
 									</li>
 									<li id="t10b" style="display: none;">
 										<label>¿Cuál?</label>
-										<input class="w3-input w3-border" type="text" name="t10b5otra">
+										<input class="w3-input w3-border" type="text" name="t10b5" placeholder="Máximo 25 caractéres" maxlength="25">
 									</li>
 								</ul>
 							</div><br/>
@@ -1148,8 +1156,8 @@
 										<input class="w3-check" type="checkbox" name="t10d11">
 										<label>T10d11. Algún otro tipo de servicio social.</label>
 									</li>
-									<li id="t10d11" style="display: none;">
-										<label>¿Cuál?</label>
+									<li id="t10d11" style="display: none;">	
+										<label>¿Qué otro tipo de servicio social?</label>
 										<input class="w3-input w3-border" type="text" name="t10d11otro">
 									</li>
 								</ul>
@@ -1495,21 +1503,21 @@
 
 		<!-- TO DO -->
 		<!-- Pié de página -->
-		<div id="piepag" class="w3-container w3-light-grey w3-padding">
-			<div id="logos" class="w3-row w3-center">
-				<div id="logoAyto" class="w3-container w3-quarter">
-					<img src=".\img\ayt.png" alt="Escudo Huétor Vega" style="width: 15%"/>
+		<div id="piepag" class="w3-container w3-padding">
+			<div id="logos" class="w3-row w3-center w3-padding">
+				<div id="logoAyto" class="w3-container w3-col" style="width: 15%">
+					<img src=".\img\ayt.png" alt="Escudo Huétor Vega" style="width: 25%"/>
 					<div class="w3-container">
-						<sub>Ayuntamiento de Huétor Vega</sub>
+						<sub>Ayuntamiento de<br/>Huétor Vega</sub>
 					</div>
 				</div>
-				<div id="logoUe" class="w3-container w3-quarter">
+				<div id="logoUe" class="w3-container w3-col" style="width: 25%">
 					<img src=".\img\ueFse.jpg" alt="´Fondo Social Europeo" style="width: 60%"/>
 				</div>
-				<div id="logoMin" class="w3-container w3-quarter">
-					<img src=".\img\minis.jpg" alt="Ministerio" style="width: 130%"/>
+				<div id="logoMin" class="w3-container w3-col" style="width: 40%">
+					<img src=".\img\minis.jpg" alt="Ministerio" style="width: 100%"/>
 				</div>
-				<div id="logoFemp" class="w3-container w3-quarter">
+				<div id="logoFemp" class="w3-container w3-col" style="width: 20%">
 					<img src=".\img\femp.jpg" alt="FEMP" style="width: 45%"/>
 				</div>
 			</div>
