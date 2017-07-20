@@ -16,3 +16,7 @@
 .ayto-nombre a {
 	text-decoration-line: none;
 }
+
+input:invalid, textarea:invalid {
+  background:red;
+}
