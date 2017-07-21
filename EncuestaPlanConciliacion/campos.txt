@@ -1,56 +1,56 @@
-Variables del formulario
-prov
-munic
-p1
-p21
-p22
-p23
-p24
-p25
-p26
-p27
-p3
-p4
-p5
-p6
-p7
-p8
-p9
-p9a
-p9b
-p9c
-p10
-p108
-t10a1
-t10a2
-t10a3
-t10a4
-t10a5
-t10b
-t10b5
-t10c
-t10d1
-t10d2
-t10d3
-t10d4
-t10d5
-t10d6
-t10d7
-t10d8
-t10d9
-t10d10
-t10d11
-t10d11otro
-d10a
-d10a1
-d10a2
-s1
-s2
-s3
-s4
-s5
-s6
-s7
-s8
-s82
-s9
+Variables del formulario::::
+prov::$prov = $_REQUEST['prov'];::$prov,
+munic::$munic = $_REQUEST['munic'];::$munic,
+p1::$p1 = $_REQUEST['p1'];::$p1,
+p21::$p21 = $_REQUEST['p21'];::$p21,
+p22::$p22 = $_REQUEST['p22'];::$p22,
+p23::$p23 = $_REQUEST['p23'];::$p23,
+p24::$p24 = $_REQUEST['p24'];::$p24,
+p25::$p25 = $_REQUEST['p25'];::$p25,
+p26::$p26 = $_REQUEST['p26'];::$p26,
+p27::$p27 = $_REQUEST['p27'];::$p27,
+p3::$p3 = $_REQUEST['p3'];::$p3,
+p4::$p4 = $_REQUEST['p4'];::$p4,
+p5::$p5 = $_REQUEST['p5'];::$p5,
+p6::$p6 = $_REQUEST['p6'];::$p6,
+p7::$p7 = $_REQUEST['p7'];::$p7,
+p8::$p8 = $_REQUEST['p8'];::$p8,
+p9::$p9 = $_REQUEST['p9'];::$p9,
+p9a::$p9a = $_REQUEST['p9a'];::$p9a,
+p9b::$p9b = $_REQUEST['p9b'];::$p9b,
+p9c::$p9c = $_REQUEST['p9c'];::$p9c,
+p10::$p10 = $_REQUEST['p10'];::$p10,
+p108::$p108 = $_REQUEST['p108'];::$p108,
+t10a1::$t10a1 = $_REQUEST['t10a1'];::$t10a1,
+t10a2::$t10a2 = $_REQUEST['t10a2'];::$t10a2,
+t10a3::$t10a3 = $_REQUEST['t10a3'];::$t10a3,
+t10a4::$t10a4 = $_REQUEST['t10a4'];::$t10a4,
+t10a5::$t10a5 = $_REQUEST['t10a5'];::$t10a5,
+t10b::$t10b = $_REQUEST['t10b'];::$t10b,
+t10b5::$t10b5 = $_REQUEST['t10b5'];::$t10b5,
+t10c::$t10c = $_REQUEST['t10c'];::$t10c,
+t10d1::$t10d1 = $_REQUEST['t10d1'];::$t10d1,
+t10d2::$t10d2 = $_REQUEST['t10d2'];::$t10d2,
+t10d3::$t10d3 = $_REQUEST['t10d3'];::$t10d3,
+t10d4::$t10d4 = $_REQUEST['t10d4'];::$t10d4,
+t10d5::$t10d5 = $_REQUEST['t10d5'];::$t10d5,
+t10d6::$t10d6 = $_REQUEST['t10d6'];::$t10d6,
+t10d7::$t10d7 = $_REQUEST['t10d7'];::$t10d7,
+t10d8::$t10d8 = $_REQUEST['t10d8'];::$t10d8,
+t10d9::$t10d9 = $_REQUEST['t10d9'];::$t10d9,
+t10d10::$t10d10 = $_REQUEST['t10d10'];::$t10d10,
+t10d11::$t10d11 = $_REQUEST['t10d11'];::$t10d11,
+t10d11otro::$t10d11otro = $_REQUEST['t10d11otro'];::$t10d11otro,
+d10a::$d10a = $_REQUEST['d10a'];::$d10a,
+d10a1::$d10a1 = $_REQUEST['d10a1'];::$d10a1,
+d10a2::$d10a2 = $_REQUEST['d10a2'];::$d10a2,
+s1::$s1 = $_REQUEST['s1'];::$s1,
+s2::$s2 = $_REQUEST['s2'];::$s2,
+s3::$s3 = $_REQUEST['s3'];::$s3,
+s4::$s4 = $_REQUEST['s4'];::$s4,
+s5::$s5 = $_REQUEST['s5'];::$s5,
+s6::$s6 = $_REQUEST['s6'];::$s6,
+s7::$s7 = $_REQUEST['s7'];::$s7,
+s8::$s8 = $_REQUEST['s8'];::$s8,
+s82::$s82 = $_REQUEST['s82'];::$s82,
+s9::$s9 = $_REQUEST['s9'];::$s9,

@@ -1,4 +1,133 @@
 <!DOCTYPE html>
+<!--
+Descripción: Formulario para encuesta de Encuesta Conciliación de la Vida Personal, Laboral y Familiar 
+Versión: Fecha: 1.0 
+Fecha: 21/07/2017
+Autor: José Miguel Arquelladas
+Email: jmaruiz@gmail.com
+Twitter: @jmarquelladas
+-->
+
+<?php
+// Archivos a incluir
+// include ...
+
+// Se ha enviado el formulario de la encuesta
+if(isset($_REQUEST['envio'])) {
+	$envio = $_REQUEST['envio'];
+	if($envio == TRUE) {
+		// Guardar fecha y hora de envío del formulario
+		// También quiere ver si puede guardar el tiempo que ha tardado en cumplimentar el formulario
+		// Guardamos el valor de los campos en un array llamado encuesta
+		$s101 = $_REQUEST['s101'];
+		$s102 = $_REQUEST['s102'];
+		$p1 = $_REQUEST['p1'];
+		$p21 = $_REQUEST['p21'];
+		$p22 = $_REQUEST['p22'];
+		$p23 = $_REQUEST['p23'];
+		$p24 = $_REQUEST['p24'];
+		$p25 = $_REQUEST['p25'];
+		$p26 = $_REQUEST['p26'];
+		$p27 = $_REQUEST['p27'];
+		$p3 = $_REQUEST['p3'];
+		$p4 = $_REQUEST['p4'];
+		$p5 = $_REQUEST['p5'];
+		$p6 = $_REQUEST['p6'];
+		$p7 = $_REQUEST['p7'];
+		$p8 = $_REQUEST['p8'];
+		$p9 = $_REQUEST['p9'];
+		$p9a = $_REQUEST['p9a'];
+		$p9b = $_REQUEST['p9b'];
+		$p9c = $_REQUEST['p9c'];
+		$p10 = $_REQUEST['p10'];
+		$p108 = $_REQUEST['p108'];
+		$t10a1 = $_REQUEST['t10a1'];
+		$t10a2 = $_REQUEST['t10a2'];
+		$t10a3 = $_REQUEST['t10a3'];
+		$t10a4 = $_REQUEST['t10a4'];
+		$t10a5 = $_REQUEST['t10a5'];
+		$t10b = $_REQUEST['t10b'];
+		$t10b5 = $_REQUEST['t10b5'];
+		$t10c = $_REQUEST['t10c'];
+		if(!(empty($_REQUEST['t10d1']))){
+			foreach ($_REQUEST['t10d1'] as $valor) {
+				$t10d1 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d2']))){
+			foreach ($_REQUEST['t10d2'] as $valor) {
+				$t10d2 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d3']))){
+			foreach ($_REQUEST['t10d3'] as $valor) {
+				$t10d3 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d4']))){
+			foreach ($_REQUEST['t10d4'] as $valor) {
+				$t10d4 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d5']))){
+			foreach ($_REQUEST['t10d5'] as $valor) {
+				$t10d5 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d6']))){
+			foreach ($_REQUEST['t10d6'] as $valor) {
+				$t10d6 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d7']))){
+			foreach ($_REQUEST['t10d7'] as $valor) {
+				$t10d7 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d8']))){
+			foreach ($_REQUEST['t10d8'] as $valor) {
+				$t10d8 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d9']))){
+			foreach ($_REQUEST['t10d9'] as $valor) {
+				$t10d9 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d10']))){
+			foreach ($_REQUEST['t10d10'] as $valor) {
+				$t10d10 = $valor;
+			}
+		}
+		if(!(empty($_REQUEST['t10d11']))){
+			foreach ($_REQUEST['t10d11'] as $valor) {
+				$t10d11 = $valor;
+			}
+		}
+		$t10d11otro = $_REQUEST['t10d11otro'];
+		$d10a = $_REQUEST['d10a'];
+		$d10a1 = $_REQUEST['d10a1'];
+		$d10a2 = $_REQUEST['d10a2'];
+		$s1 = $_REQUEST['s1'];
+		$s2 = $_REQUEST['s2'];
+		$s3 = $_REQUEST['s3'];
+		$s4 = $_REQUEST['s4'];
+		$s5 = $_REQUEST['s5'];
+		$s6 = $_REQUEST['s6'];
+		$s7 = $_REQUEST['s7'];
+		$s8 = $_REQUEST['s8'];
+		$s82 = $_REQUEST['s82'];
+		$s9 = $_REQUEST['s9'];
+
+		// Guardamos las variables de la encuesta en un array
+		$encuesta = array('s101'=>$s101, 's102'=>$s102, 'p1'=>$p1, 'p2'=>$p21, 'p22'=>$p22, 'p23'=>$p23, 'p24'=>$p24, 'p25'=>$p25, 'p26'=>$p26, 'p27'=>$p27, 'p3'=>$p3, 'p4'=>$p4, 'p5'=>$p5, 'p6'=>$p6, 'p7'=>$p7, 'p8'=>$p8, 'p9'=>$p9, 'p9a'=>$p9a, 'p9b'=>$p9b, 'p9c'=>$p9c, 'p10'=>$p10, 'p108'=>$p108, 't10a1'=>$t10a1, 't10a2'=>$t10a2, 't10a3'=>$t10a3, 't10a4'=>$t10a4, 't10a5'=>$t10a5, 't10b'=>$t10b, 't10b5'=>$t10b5, 't10c'=>$t10c, 't10d1'=>$t10d1, 't10d2'=>$t10d2, 't10d3'=>$t10d3, 't10d4'=>$t10d4, 't10d5'=>$t10d5, 't10d6'=>$t10d6, 't10d7'=>$t10d7, 't10d8'=>$t10d8, 't10d9'=>$t10d9, 't10d10'=>$t10d10, 't10d11'=>$t10d11, 't10d11otro'=>$t10d11otro, 'd10a'=>$d10a, 'd10a1'=>$d10a1, 'd10a2'=>$d10a2, 's1'=>$s1, 's2'=>$s2, 's3'=>$s3, 's4'=>$s4, 's5'=>$s5, 's6'=>$s6, 's7'=>$s7, 's8'=>$s8, 's82'=>$s82, 's9'=>$s9);
+
+		// revisión del array
+		var_dump($encuesta);
+	}
+} 
+?>
+
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -156,7 +285,7 @@
 					<!--<i class="fa fa-circle-o" style="font-size:12px"></i>--> Fin <i class="fa fa-angle-double-right" style="font-size: "></i></div>
 			</div>
 
-			<form id="EncConcilia" class="w3-container w3-card-4" >
+			<form class="w3-container w3-card-4" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" name="formEncConcilia">
 
 			<!-- Pestaña 1 - Inicio -->
 			<div id="inicio" class="w3-container opc" style="display: block">
@@ -167,7 +296,7 @@
 				<!-- S10.1 -->
 				<b>¿En qué provincia reside habitualmente usted?</b>
 				<div class="w3-responsive">
-					<select class="w3-select w3-border" name="prov">
+					<select class="w3-select w3-border" name="s101">
 						<option value="18">Granada</option>
 						<option value=”1“>Álava/Araba</option>
 						<option value="2">Albacete</option>
@@ -228,7 +357,7 @@
 				<!-- S10.2 -->
 				<b>¿En qué municipio reside habitualmente usted?</b>
 				<div class="w3-responsive">
-					<select class="w3-select w3-border" name="muni">
+					<select class="w3-select w3-border" name="s102">
 							<option value='HUETOR VEGA'>HUETOR VEGA</option>
 							<option value='AGRON'>AGRON</option>
 							<option value='ALAMEDILLA'>ALAMEDILLA</option>
@@ -1323,48 +1452,48 @@
 							<div class="w3-responsive">
 								<ul class="w3-ul">
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d1">
+										<input class="w3-check" type="checkbox" name="t10d1" value="Ayudas para la vivienda">
 										<label>Ayudas para la vivienda</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d2">
+										<input class="w3-check" type="checkbox" name="t10d2" value="Planes de pensiones o complementos de pensiones">
 										<label>Planes de pensiones o complementos de pensiones</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d3">
+										<input class="w3-check" type="checkbox" name="t10d3" value="Ayudas para la formación (disposición de días, flexibilidad horaria, ayudas económicas…)">
 										<label>Ayudas para la formación (disposición de días, flexibilidad horaria, ayudas económicas…)</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d4">
+										<input class="w3-check" type="checkbox" name="t10d4" value="Comedor para empleados/as o ayudas para manutención">
 										<label>Comedor para empleados/as o ayudas para manutención</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d5">
+										<input class="w3-check" type="checkbox" name="t10d5" value="Ayudas de transporte">
 										<label>Ayudas de transporte</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d6">
+										<input class="w3-check" type="checkbox" name="t10d6" value="Ayudas para gastos en área de salud">
 										<label>Ayudas para gastos en área de salud</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d7">
+										<input class="w3-check" type="checkbox" name="t10d7" value="Ayudas para enseñanza de hijos/as o familiares">
 										<label>Ayudas para enseñanza de hijos/as o familiares</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d8">
+										<input class="w3-check" type="checkbox" name="t10d8" value="Guarderías o ayudas para guarderías">
 										<label>Guarderías o ayudas para guarderías</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d9">
+										<input class="w3-check" type="checkbox" name="t10d9" value="Ofertas de ocio">
 										<label>Ofertas de ocio</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d10">
+										<input class="w3-check" type="checkbox" name="t10d10" value="Flexibilidad horaria">
 										<label>Flexibilidad horaria</label>
 									</li>
 									<li>
-										<input class="w3-check" type="checkbox" name="t10d11">
-										<label>Algún otro tipo de servicio social.</label>
+										<input class="w3-check" type="checkbox" name="t10d11" value="Algún otro tipo de servicio social">
+										<label>Algún otro tipo de servicio social</label>
 									</li>
 									<li id="t10d11" style="display: none;">	
 										<label>¿Qué otro tipo de servicio social?</label>
@@ -1629,7 +1758,7 @@
 				<input type="hidden" name="s6">
 				<div class="w3-container">
 					<select class="w3-select w3-border" name="s6">
-						<option value="99">Seleccione una opción</option>
+						<option value="99">Seleccione una opción...</option>
 						<option value="0">0</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -1767,6 +1896,7 @@
 					<div> <!-- Boton enviar encuesta -->
 						<p>
 							<div class="w3-display-container w3-padding">
+								<input type="hidden" name="envio" value="1">
 								<a class="w3-button w3-green w3-round w3-padding-large w3-display-middle" href="javascript:void(0)" onclick="abrirOpcion(event, 'envio');">Enviar Encuesta <i class="fa fa-check" style="font-size:16px"></i></a>
 							</div>
 						</p>
@@ -1824,7 +1954,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Código Javascript para cambio de pestañas-->
@@ -1863,14 +1992,13 @@
 		} else if(opcion == "envio") {
 			// Mostrar apartado de enviando datos y redireccionamiento a página principal del ayuntamiento
 			document.getElementById('gracias').style.display = "none";
-			document.getElementById('gracias').style.display = "none";
 			document.getElementById('enviando').style.display = "block";
-			setTimeout("redireccionarPortal()" , 2000);
+			document.formEncConcilia.submit();
+			// setTimeout("redireccionarPortal()" , 2000);
 		}
 		// Mostrar el documento desde el principio o desde arriba
 		$('html, body').animate({scrollTop: $('#principal').offset().top},200);
 	}
 	</script>
-
 </body>
 </html>
