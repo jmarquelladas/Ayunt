@@ -11,6 +11,9 @@ Twitter: @jmarquelladas
 <?php
 // Archivos a incluir
 // include ...
+// Clase de BBDD
+// Clase común
+// Clase etc...
 
 // Se ha enviado el formulario de la encuesta
 if(isset($_REQUEST['envio'])) {
@@ -49,78 +52,39 @@ if(isset($_REQUEST['envio'])) {
 		$t10b = $_REQUEST['t10b'];
 		$t10b5 = $_REQUEST['t10b5'];
 		$t10c = $_REQUEST['t10c'];
-		if(!(empty($_REQUEST['t10d1']))){
-			foreach ($_REQUEST['t10d1'] as $valor) {
-				$t10d1 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d2']))){
-			foreach ($_REQUEST['t10d2'] as $valor) {
-				$t10d2 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d3']))){
-			foreach ($_REQUEST['t10d3'] as $valor) {
-				$t10d3 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d4']))){
-			foreach ($_REQUEST['t10d4'] as $valor) {
-				$t10d4 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d5']))){
-			foreach ($_REQUEST['t10d5'] as $valor) {
-				$t10d5 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d6']))){
-			foreach ($_REQUEST['t10d6'] as $valor) {
-				$t10d6 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d7']))){
-			foreach ($_REQUEST['t10d7'] as $valor) {
-				$t10d7 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d8']))){
-			foreach ($_REQUEST['t10d8'] as $valor) {
-				$t10d8 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d9']))){
-			foreach ($_REQUEST['t10d9'] as $valor) {
-				$t10d9 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d10']))){
-			foreach ($_REQUEST['t10d10'] as $valor) {
-				$t10d10 = $valor;
-			}
-		}
-		if(!(empty($_REQUEST['t10d11']))){
-			foreach ($_REQUEST['t10d11'] as $valor) {
-				$t10d11 = $valor;
-			}
-		}
-		$t10d11otro = $_REQUEST['t10d11otro'];
-		$d10a = $_REQUEST['d10a'];
-		$d10a1 = $_REQUEST['d10a1'];
-		$d10a2 = $_REQUEST['d10a2'];
-		$s1 = $_REQUEST['s1'];
-		$s2 = $_REQUEST['s2'];
-		$s3 = $_REQUEST['s3'];
-		$s4 = $_REQUEST['s4'];
-		$s5 = $_REQUEST['s5'];
-		$s6 = $_REQUEST['s6'];
-		$s7 = $_REQUEST['s7'];
-		$s8 = $_REQUEST['s8'];
-		$s82 = $_REQUEST['s82'];
-		$s9 = $_REQUEST['s9'];
 
-		// Guardamos las variables de la encuesta en un array
-		$encuesta = array('s101'=>$s101, 's102'=>$s102, 'p1'=>$p1, 'p2'=>$p21, 'p22'=>$p22, 'p23'=>$p23, 'p24'=>$p24, 'p25'=>$p25, 'p26'=>$p26, 'p27'=>$p27, 'p3'=>$p3, 'p4'=>$p4, 'p5'=>$p5, 'p6'=>$p6, 'p7'=>$p7, 'p8'=>$p8, 'p9'=>$p9, 'p9a'=>$p9a, 'p9b'=>$p9b, 'p9c'=>$p9c, 'p10'=>$p10, 'p108'=>$p108, 't10a1'=>$t10a1, 't10a2'=>$t10a2, 't10a3'=>$t10a3, 't10a4'=>$t10a4, 't10a5'=>$t10a5, 't10b'=>$t10b, 't10b5'=>$t10b5, 't10c'=>$t10c, 't10d1'=>$t10d1, 't10d2'=>$t10d2, 't10d3'=>$t10d3, 't10d4'=>$t10d4, 't10d5'=>$t10d5, 't10d6'=>$t10d6, 't10d7'=>$t10d7, 't10d8'=>$t10d8, 't10d9'=>$t10d9, 't10d10'=>$t10d10, 't10d11'=>$t10d11, 't10d11otro'=>$t10d11otro, 'd10a'=>$d10a, 'd10a1'=>$d10a1, 'd10a2'=>$d10a2, 's1'=>$s1, 's2'=>$s2, 's3'=>$s3, 's4'=>$s4, 's5'=>$s5, 's6'=>$s6, 's7'=>$s7, 's8'=>$s8, 's82'=>$s82, 's9'=>$s9);
+		
+		$encuesta = array('s101'=>$s101, 's102'=>$s102, 'p1'=>$p1, 'p21'=>$p21, 'p22'=>$p22, 'p23'=>$p23, 'p24'=>$p24, 'p25'=>$p25, 'p26'=>$p26, 'p27'=>$p27, 'p3'=>$p3, 'p4'=>$p4, 'p5'=>$p5, 'p6'=>$p6, 'p7'=>$p7, 'p8'=>$p8, 'p9'=>$p9, 'p9a'=>$p9a, 'p9b'=>$p9b, 'p9c'=>$p9c, 'p10'=>$p10, 'p108'=>$p108, 't10a1'=>$t10a1, 't10a2'=>$t10a2, 't10a3'=>$t10a3, 't10a4'=>$t10a4, 't10a5'=>$t10a5, 't10b'=>$t10b, 't10b5'=>$t10b5, 't10c'=>$t10c, 't10d1'=>NULL, 't10d2'=>NULL, 't10d3'=>NULL, 't10d4'=>NULL, 't10d5'=>NULL, 't10d6'=>NULL, 't10d7'=>NULL, 't10d8'=>NULL, 't10d9'=>NULL, 't10d10'=>NULL, 't10d11'=>NULL, 't10d11otro'=>NULL, 'd10a'=>NULL, 'd10a1'=>NULL, 'd10a2'=>NULL, 's1'=>NULL, 's2'=>NULL, 's3'=>NULL, 's4'=>NULL, 's5'=>NULL, 's6'=>NULL, 's7'=>NULL, 's8'=>NULL, 's82'=>NULL, 's9'=>NULL);
+
+
+		if(!(empty($_REQUEST['t10d1']))) $encuesta['t10d1'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d2']))) $encuesta['t10d2'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d3']))) $encuesta['t10d3'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d4']))) $encuesta['t10d4'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d5']))) $encuesta['t10d5'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d6']))) $encuesta['t10d6'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d7']))) $encuesta['t10d7'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d8']))) $encuesta['t10d8'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d9']))) $encuesta['t10d9'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d10']))) $encuesta['t10d10'] = 1; // Guardamos en el array principal
+		if(!(empty($_REQUEST['t10d11']))) $encuesta['t10d11'] = 1; // Guardamos en el array principal
+
+		$encuesta['t10d11otro'] = $_REQUEST['t10d11otro'];
+		// $t10d11otro = $_REQUEST['t10d11otro'];
+		$encuesta['j10a'] = $_REQUEST['j10a'];
+		$encuesta['d10a'] = $_REQUEST['d10a'];
+		$encuesta['d10a1'] = $_REQUEST['d10a1'];
+		$encuesta['d10a2'] = $_REQUEST['d10a2'];
+		$encuesta['s1'] = $_REQUEST['s1'];
+		$encuesta['s2'] = $_REQUEST['s2'];
+		$encuesta['s3'] = $_REQUEST['s3'];
+		$encuesta['s4'] = $_REQUEST['s4'];
+		$encuesta['s5'] = $_REQUEST['s5'];
+		$encuesta['s6'] = $_REQUEST['s6'];
+		$encuesta['s7'] = $_REQUEST['s7'];
+		$encuesta['s8'] = $_REQUEST['s8'];
+		$encuesta['s82'] = $_REQUEST['s82'];
+		$encuesta['s9'] = $_REQUEST['s9'];
 
 		// revisión del array
 		var_dump($encuesta);
@@ -297,58 +261,58 @@ if(isset($_REQUEST['envio'])) {
 				<b>¿En qué provincia reside habitualmente usted?</b>
 				<div class="w3-responsive">
 					<select class="w3-select w3-border" name="s101">
-						<option value="18">Granada</option>
-						<option value=”1“>Álava/Araba</option>
-						<option value="2">Albacete</option>
-						<option value="3">Alicante/Alacant</option>
-						<option value="4">Almería</option>
-						<option value="33">Asturias</option>
-						<option value="5">Ávila</option>
-						<option value="6">Badajoz</option>
-						<option value="7">Balears, Illes</option>
-						<option value="8">Barcelona</option>
-						<option value="48">Bizkaia</option>
-						<option value="9">Burgos</option>
-						<option value="10">Cáceres</option>
-						<option value="11">Cádiz</option>
-						<option value="39">Cantabria</option>
-						<option value="12">Castellón/Castelló</option>
-						<option value="51">Ceuta</option>
-						<option value="13">Ciudad Real</option>
-						<option value="14">Córdoba</option>
-						<option value="15">Coruña, A</option>
-						<option value="16">Cuenca</option>
-						<option value="20">Gipuzkoa</option>
-						<option value="17">Girona</option>
-						<option value="19">Guadalajara</option>
-						<option value="21">Huelva</option>
-						<option value="22">Huesca</option>
-						<option value="23">Jaén</option>
-						<option value="24">León</option>
-						<option value="25">Lleida</option>
-						<option value="27">Lugo</option>
-						<option value="28">Madrid</option>
-						<option value="29">Málaga</option>
-						<option value="52">Melilla</option>
-						<option value="30">Murcia</option>
-						<option value="31">Navarra</option>
-						<option value="32">Ourense</option>
-						<option value="34">Palencia</option>
-						<option value="35">Palmas, Las</option>
-						<option value="36">Pontevedra</option>
-						<option value="26">Rioja, La</option>
-						<option value="37">Salamanca</option>
-						<option value="38">Santa Cruz de Tenerife</option>
-						<option value="40">Segovia</option>
-						<option value="41">Sevilla</option>
-						<option value="42">Soria</option>
-						<option value="43">Tarragona</option>
-						<option value="44">Teruel</option>
-						<option value="45">Toledo</option>
-						<option value="46">Valencia/València</option>
-						<option value="47">Valladolid</option>
-						<option value="49">Zamora</option>
-						<option value="50">Zaragoza</option>
+						<option value='Granada'>Granada</option>
+						<option value='Álava/Araba'>Álava/Araba</option>
+						<option value='Albacete'>Albacete</option>
+						<option value='Alicante/Alacant'>Alicante/Alacant</option>
+						<option value='Almería'>Almería</option>
+						<option value='Asturias'>Asturias</option>
+						<option value='Ávila'>Ávila</option>
+						<option value='Badajoz'>Badajoz</option>
+						<option value='Balears, Illes'>Balears, Illes</option>
+						<option value='Barcelona'>Barcelona</option>
+						<option value='Bizkaia'>Bizkaia</option>
+						<option value='Burgos'>Burgos</option>
+						<option value='Cáceres'>Cáceres</option>
+						<option value='Cádiz'>Cádiz</option>
+						<option value='Cantabria'>Cantabria</option>
+						<option value='Castellón/Castelló'>Castellón/Castelló</option>
+						<option value='Ceuta'>Ceuta</option>
+						<option value='Ciudad Real'>Ciudad Real</option>
+						<option value='Córdoba'>Córdoba</option>
+						<option value='Coruña, A'>Coruña, A</option>
+						<option value='Cuenca'>Cuenca</option>
+						<option value='Gipuzkoa'>Gipuzkoa</option>
+						<option value='Girona'>Girona</option>
+						<option value='Guadalajara'>Guadalajara</option>
+						<option value='Huelva'>Huelva</option>
+						<option value='Huesca'>Huesca</option>
+						<option value='Jaén'>Jaén</option>
+						<option value='León'>León</option>
+						<option value='Lleida'>Lleida</option>
+						<option value='Lugo'>Lugo</option>
+						<option value='Madrid'>Madrid</option>
+						<option value='Málaga'>Málaga</option>
+						<option value='Melilla'>Melilla</option>
+						<option value='Murcia'>Murcia</option>
+						<option value='Navarra'>Navarra</option>
+						<option value='Ourense'>Ourense</option>
+						<option value='Palencia'>Palencia</option>
+						<option value='Palmas, Las'>Palmas, Las</option>
+						<option value='Pontevedra'>Pontevedra</option>
+						<option value='Rioja, La'>Rioja, La</option>
+						<option value='Salamanca'>Salamanca</option>
+						<option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
+						<option value='Segovia'>Segovia</option>
+						<option value='Sevilla'>Sevilla</option>
+						<option value='Soria'>Soria</option>
+						<option value='Tarragona'>Tarragona</option>
+						<option value='Teruel'>Teruel</option>
+						<option value='Toledo'>Toledo</option>
+						<option value='Valencia/València'>Valencia/València</option>
+						<option value='Valladolid'>Valladolid</option>
+						<option value='Zamora'>Zamora</option>
+						<option value='Zaragoza'>Zaragoza</option>
 					</select>
 				</div>
 				<br/><br/>
@@ -1127,18 +1091,17 @@ if(isset($_REQUEST['envio'])) {
 
 				<!-- P7 -->
 				<b>¿Cuántas horas a la semana le dedica Ud., personalmente, a las tareas domésticas, sin incluir el cuidado de los/as hijos/as ni actividades de ocio?</b>
-				<input type="hidden" name="p7" value="99">
 				<div class="w3-responsive">
-					<input class="w3-input w3-border" type="number" name="p7" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas">
+					<input class="w3-input w3-border" type="number" name="p7" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas" value="0">
 				</div>
 				<br/><br/>
 				<!-- P7 -->
 
 				<!-- P8 -->
+				<!-- TO DO controlar campo numerico -->
 				<b>Y, aproximadamente, ¿cuántas horas a la semana dedica Ud. al cuidado de algún miembro de la familia (p. ej. niños, ancianos o personas con discapacidad?</b>
-				<input type="hidden" name="p8" value="99">
 				<div class="w3-responsive">
-					<input class="w3-input w3-border" type="number" name="p8" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas">
+					<input class="w3-input w3-border" type="number" name="p8" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas" value="0">
 				</div>
 				<br/><br/>
 				<!-- P8 -->
@@ -1152,7 +1115,6 @@ if(isset($_REQUEST['envio'])) {
 							<input class="w3-radio" type="radio" name="p9" value="1" >
 							<label>Tiene cónyuge o pareja y comparten la misma vivienda</label>
 							<!-- Si la opcion anterior con value="1" es la seleccionada hay que pasar a P9a, P9b y P9c, o sea que aparezcan automáticamente para ser contestadas -->
-							<!-- P9a P9b y P9c -->
 						</li>
 						<li>
 							<input class="w3-radio" type="radio" name="p9" value="2" >
@@ -1162,20 +1124,20 @@ if(isset($_REQUEST['envio'])) {
 							<input class="w3-radio" type="radio" name="p9" value="3" >
 							<label>No tiene cónyuge ni pareja</label>
 						</li>
+
+						<!-- P9a P9b y P9c -->
 						<div id="p9abc" class="w3-container w3-card-4" style="display: none;">
 							<!-- P9a -->
 							<br/>
 							<b>P9a. Aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja a las tareas domésticas, sin incluir el cuidado de los/as hijos/as ni actividades de ocio?</b>
-							<input type="hidden" name="p9a" value="99">
 							<div class="w3-responsive">
-								<input class="w3-input w3-border" type="text" name="p9a" maxlength="3">
+								<input class="w3-input w3-border" type="text" name="p9a" maxlength="3" value="0">
 							</div><br/>
 							<!-- P9a -->
 							<!-- P9b -->
 							<b>P9b. Y, aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja al cuidado de algún miembro de la familia.<br/>(p. ej. niños, ancianos o personas con discapacidad)?</b>
-							<input type="hidden" name="p9b" value="99">
 							<div class="w3-responsive">
-								<input class="w3-input w3-border" type="text" name="p9b" maxlength="3">
+								<input class="w3-input w3-border" type="text" name="p9b" maxlength="3" value="0">
 							</div>
 							<br/>
 							<!-- P9b -->
@@ -1275,7 +1237,7 @@ if(isset($_REQUEST['envio'])) {
 							<div class="w3-responsive">
 								<ul class="w3-ul">
 									<li>
-										<label>Ha vuelto del trabajo demasiado cansada/o para hacer las tareas de la casa.</label>
+										<b>Ha vuelto del trabajo demasiado cansada/o para hacer las tareas de la casa.</b>
 										<input type="hidden" name="t10a1" value="99">
 										<div class="w3-responsive">
 											<ul class="w3-ul">
@@ -1693,7 +1655,7 @@ if(isset($_REQUEST['envio'])) {
 				<div class="w3-container">
 					<ul class="w3-ul">
 						<li>
-							<input class="w3-input w3-border" type="number" name="s2" maxlength="2" pattern="[0-9]*" min="18" max="99" placeholder="Insertar la Edad">
+							<input class="w3-input w3-border" type="number" name="s2" maxlength="2" pattern="[0-9]*" min="18" max="99" placeholder="Insertar la Edad" value="0">
 						</li>
 					</ul>
 				</div><br/>
@@ -1736,7 +1698,7 @@ if(isset($_REQUEST['envio'])) {
 				<div class="w3-container">
 					<ul class="w3-ul">
 						<li>
-							<input class="w3-input w3-border" type="number" name="s4" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de personas">
+							<input class="w3-input w3-border" type="number" name="s4" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de personas" value="0">
 						</li>
 					</ul>
 				</div><br/>
@@ -1748,7 +1710,7 @@ if(isset($_REQUEST['envio'])) {
 					<ul class="w3-ul">
 						<li>
 							<!-- TO DO Cuadro desplegable desde 0 hasta 9 o más -->
-							<input class="w3-input w3-border" type="text" name="s5" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de hijos a su cargo">
+							<input class="w3-input w3-border" type="text" name="s5" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de hijos a su cargo" value="0">
 						</li>
 					</ul>
 				</div><br/>
