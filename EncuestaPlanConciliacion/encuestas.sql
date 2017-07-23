@@ -8232,9 +8232,9 @@ INSERT INTO munic (`codmunine`, `codmunotro`, `codprov`,`nommunicipio`) VALUES
 
 CREATE TABLE IF NOT EXISTS conciliacion (
 	codentrada INT(6) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria para tabla CONCILIACION',
-	fechaencuesta DATETIME DEFAULT CURRENT_TIMESTAMP,
-	dirip VARCHAR(15) COMMENT 'Dirección IP desde donde se realiza la encuesta',
-	tie_rea DATETIME COMMENT 'Tiempo en realizar la encuesta',
+	fecha_encuesta DATETIME DEFAULT CURRENT_TIMESTAMP,
+	direc_ip VARCHAR(15) COMMENT 'Dirección IP desde donde se realiza la encuesta',
+	tiempo_realiz DATETIME COMMENT 'Tiempo en realizar la encuesta',
 	s101 VARCHAR(50) COMMENT 'Provincia de residencia del encuestado',
 	s102 VARCHAR(50) COMMENT 'Municipio de residencia del encuestado',
 	p1 VARCHAR(2) COMMENT 'Satisfaccion vida en general',
