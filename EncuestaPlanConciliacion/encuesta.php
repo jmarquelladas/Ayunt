@@ -9,116 +9,118 @@ Twitter: @jmarquelladas
 -->
 
 <?php
-// Archivos a incluir
-// include ...
-// Clase de BBDD
-// Clase común
-// Clase etc...
-
 // Poner codificación para visualizar correctamente la web
+header('Content-Type: text/html; charset=UTF-8');
+
+// Incluimos el archivo de funciones
+include 'funciones.inc.php';
+
+// Realizamos la carga de las clases
+require_once('BD.php');
+
+// Configuramos la zona horaria
+date_default_timezone_set('Europe/Madrid');
 
 // Se ha enviado el formulario de la encuesta
 if(isset($_REQUEST['envio'])) {
 	$envio = $_REQUEST['envio'];
-	if($envio == TRUE) {
+	if($envio) {
 		// Guardar fecha y hora de envío del formulario
 		// También quiere ver si puede guardar el tiempo que ha tardado en cumplimentar el formulario
-		// Guardamos el valor de los campos en un array llamado encuesta
-		$s101 = $_REQUEST['s101'];
-		$s102 = $_REQUEST['s102'];
-		$p1 = $_REQUEST['p1'];
-		$p21 = $_REQUEST['p21'];
-		$p22 = $_REQUEST['p22'];
-		$p23 = $_REQUEST['p23'];
-		$p24 = $_REQUEST['p24'];
-		$p25 = $_REQUEST['p25'];
-		$p26 = $_REQUEST['p26'];
-		$p27 = $_REQUEST['p27'];
-		$p3 = $_REQUEST['p3'];
-		$p4 = $_REQUEST['p4'];
-		$p5 = $_REQUEST['p5'];
-		$p6 = $_REQUEST['p6'];
-		$p7 = $_REQUEST['p7'];
-		$p8 = $_REQUEST['p8'];
-		$p9 = $_REQUEST['p9'];
-		$p9a
-		$p9b
-		$p9c
-		$p10
-		$p108
-		$t10a1
-		$t10a2
-		$t10a3
-		$t10a4
-		$t10a5
-		$
 
+		// Guardamos el valor de los campos en un array llamado encuesta
+		// Inicializamos las variables con el valor de los campos pasados del furmulario
+		$direc_ip = getDirecIpReal();
+		$tiempo_realiz = NULL;  // TO DO calcular tiempo utilizado para realizar la encuesta, con cookies o algo así.
+		$s101	= $_REQUEST['s101'];
+		$s102   = $_REQUEST['s102'];
+		$p1     = $_REQUEST['p1'];
+		$p21    = $_REQUEST['p21'];
+		$p22    = $_REQUEST['p22'];
+		$p23    = $_REQUEST['p23'];
+		$p24    = $_REQUEST['p24'];
+		$p25    = $_REQUEST['p25'];
+		$p26    = $_REQUEST['p26'];
+		$p27    = $_REQUEST['p27'];
+		$p3     = $_REQUEST['p3'];
+		$p4     = $_REQUEST['p4'];
+		$p5     = $_REQUEST['p5'];
+		$p6     = $_REQUEST['p6'];
+		$p7     = $_REQUEST['p7'];
+		$p8     = $_REQUEST['p8'];
+		$p9     = $_REQUEST['p9'];
+		$p9a    = $_REQUEST['p9a'];
+		$p9b    = $_REQUEST['p9b'];
+		$p9c    = $_REQUEST['p9c'];
+		$p10    = $_REQUEST['p10'];
+		$p108   = $_REQUEST['p108'];
+		$t10a1  = $_REQUEST['t10a1'];
+		$t10a2  = $_REQUEST['t10a2'];
+		$t10a3  = $_REQUEST['t10a3'];
+		$t10a4  = $_REQUEST['t10a4'];
+		$t10a5  = $_REQUEST['t10a5'];
+		$t10b   = $_REQUEST['t10b'];
+		$t10b5  = $_REQUEST['t10b5'];
+		$t10c   = $_REQUEST['t10c'];
+		$t10d1  = NULL;
+		$t10d2  = NULL;
+		$t10d3  = NULL;
+		$t10d4  = NULL;
+		$t10d5  = NULL;
+		$t10d6  = NULL;
+		$t10d7  = NULL;
+		$t10d8  = NULL;
+		$t10d9  = NULL;
+		$t10d10 = NULL;
+		$t10d11 = NULL;
+		$t10d11otro  = $_REQUEST['t10d11otro'];
+		$d10a        = $_REQUEST['d10a'];
+		$d10a1       = $_REQUEST['d10a1'];
+		$d10a112cual = $_REQUEST['d10a112cual'];
+		$d10a2 	= $_REQUEST['d10a2'];
+		$j10a  	= $_REQUEST['j10a'];
+		$s1  = $_REQUEST['s1'];
+		$s2  = $_REQUEST['s2'];
+		$s3  = $_REQUEST['s3'];
+		$s4  = $_REQUEST['s4'];
+		$s5  = $_REQUEST['s5'];
+		$s6  = $_REQUEST['s6'];
+		$s7  = $_REQUEST['s7'];
+		$s8  = $_REQUEST['s8'];
+		$s82 = $_REQUEST['s82'];
+		$s9  = $_REQUEST['s9'];
 
 		// Comprobamos pregunta p9 para dar valor a p9a, p9b y p9c
-		if($p9 == 1) { //
-			$p9a = $_REQUEST['p9a'];
-			$p9b = $_REQUEST['p9b'];
-			$p9c = $_REQUEST['p9c'];
-		} else {
+		if($p9 != 1) {
 			$p9a = NULL;
 			$p9b = NULL;
 			$p9c = NULL;
 		}
 
-		$p10 = $_REQUEST['p10'];
-		$p108 = $_REQUEST['p108'];
-
-		// Comprobamos pregunta p10 para dar valor a T10a, J10a y D10a y ramas
-		if($p10 == 1) { // Trabajadores -> T10a
-			// Recogemos los valores dados en formulario
-			$t10a1 = $_REQUEST['t10a1'];
-			$t10a2 = $_REQUEST['t10a2'];
-			$t10a3 = $_REQUEST['t10a3'];
-			$t10a4 = $_REQUEST['t10a4'];
-			$t10a5 = $_REQUEST['t10a5'];
-			$t10b  = $_REQUEST['t10b'];
-
-			// Comprobamos pregunta t10b para dar valor a t10b5
-			if($t10b == 5) { // Otro tipo de jornada
-				$t10b5 = $_REQUEST['t10b5'];
-			} else {
-				$t10b5 = NULL;
-			}
-
-			$t10c  = $_REQUEST['t10c'];
+		// Comprobamos pregunta p10 para dar valor a t10a, j10a, d10a y ramas
+		if($p10 == 1) { // Opcion Trabajando
+			// Poner en NULL las preguntas j10a, d10a, d10a1, d10a112cual, d10a2
+			$p108 =  NULL;
+			$j10a =	 NULL;
+			$d10a =  NULL;
+			$d10a1 = NULL;
+			$d10a112cual = NULL;
+			$d10a2 = NULL;
 
 			// Comprobamos valor de variables apartado t10d
-			if(!(empty($_REQUEST['t10d1']))) $encuesta['t10d1']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d2']))) $encuesta['t10d2']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d3']))) $encuesta['t10d3']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d4']))) $encuesta['t10d4']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d5']))) $encuesta['t10d5']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d6']))) $encuesta['t10d6']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d7']))) $encuesta['t10d7']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d8']))) $encuesta['t10d8']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d9']))) $encuesta['t10d9']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d10']))) $encuesta['t10d10'] = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d11']))) { // Algún otro tipo de servicio social
-				$encuesta['t10d11'] = 1; // Guardamos en el array principal
-				$encuesta['t10d11otro'] = $_REQUEST['t10d11otro']; // Guardamos el texto adicional
-			}
-
-			// Damos valor NULL a apartados j10a, d10a y p108 ya que no han sido seleccionados
-			$j10a = NULL; // Pregunta para t10 igual a 2 o 3 (jubilados)
-
-			$d10a  = NULL;
-			$d10a1 = NULL;
-			$d10a112cual = NULL; // TO DO Actualizar en BD 
-			$d10a2  = NULL;
-
-			$p108   = NULL;
-
-		} else if($p10 == 2 || $p10 == 3) { // Jubilados -> J10a
-			// Recogemos el valor dado en j10a
-			$j10a = $_REQUEST['j10a'];
-
-			// Damos valor NULL a apartados t10a, t10b, t10c, t10d, d10a, d10a1, d10a2 y p108 ya que no han sido seleccionados
-			// t10
+			if(!(empty($_REQUEST['t10d1']))) $t10d1 = 1; 
+			if(!(empty($_REQUEST['t10d2']))) $t10d2 = 1; 
+			if(!(empty($_REQUEST['t10d3']))) $t10d3 = 1; 
+			if(!(empty($_REQUEST['t10d4']))) $t10d4 = 1; 
+			if(!(empty($_REQUEST['t10d5']))) $t10d5 = 1; 
+			if(!(empty($_REQUEST['t10d6']))) $t10d6 = 1; 
+			if(!(empty($_REQUEST['t10d7']))) $t10d7 = 1; 
+			if(!(empty($_REQUEST['t10d8']))) $t10d8 = 1; 
+			if(!(empty($_REQUEST['t10d9']))) $t10d9 = 1; 
+			if(!(empty($_REQUEST['t10d10']))) $t10d10 = 1; 
+			if(!(empty($_REQUEST['t10d11']))) $t10d11 = 1; 
+		} else if($p10 == 2 || $p10 == 3) { // Opciones Jubilados
+			// Poner en NULL las preguntas t10a1, t10a2, t10a3, t10a4, t10a5, t10b, t10b5, t10c, todas las t10d (1-11), t10d11otro, d10a, d10a1, d10a112cual y d10a2
 			$t10a1 = NULL;
 			$t10a2 = NULL;
 			$t10a3 = NULL;
@@ -127,44 +129,24 @@ if(isset($_REQUEST['envio'])) {
 			$t10b  = NULL;
 			$t10b5 = NULL;
 			$t10c  = NULL;
-
-			// Comprobamos valor de variables apartado t10d
-			if(!(empty($_REQUEST['t10d1']))) $encuesta['t10d1']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d2']))) $encuesta['t10d2']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d3']))) $encuesta['t10d3']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d4']))) $encuesta['t10d4']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d5']))) $encuesta['t10d5']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d6']))) $encuesta['t10d6']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d7']))) $encuesta['t10d7']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d8']))) $encuesta['t10d8']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d9']))) $encuesta['t10d9']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d10']))) $encuesta['t10d10'] = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d11']))) $encuesta['t10d11'] = 1; // Guardamos en el array principal
+			$t10d1 = NULL;
+			$t10d2 = NULL;
+			$t10d3 = NULL;
+			$t10d4 = NULL;
+			$t10d5 = NULL;
+			$t10d6 = NULL;
+			$t10d7 = NULL;
+			$t10d8 = NULL;
+			$t10d9 = NULL;
+			$t10d10 = NULL;
+			$t10d11 = NULL;
 			$t10d11otro = NULL;
-
-			// d10
-			$d10a  = NULL;
-			$d10a1 = NULL;
-			$d10a112cual = NULL; // TO DO Actualizar en BD 
+			$d10a   = NULL;
+			$d10a1  = NULL;
+			$d10a112cual  = NULL;
 			$d10a2  = NULL;
-
-			$p108   = NULL;
-
 		} else if($p10 >= 4 && $p10 <= 7) { // Desempleados, estudiantes o ama/o de casa
-			// Recogemos el valor dado en d10a, d10a1, d10a112cual y d10a2
-			$d10a  = $_REQUEST['d10a'];
-			$d10a1 = $_REQUEST['d10a1'];
-			// Comprobamos pregunta d10a1 para dar valor a d10a112cual
-			if($d10a1 == 12) { // Otro tipo de jornada
-				$d10a112cual = $_REQUEST['d10a112cual'];
-			} else {
-				$d10a112cual = NULL;
-			}
-
-			$d10a2 = $_REQUEST['d10a2'];
-
-			// Damos valor NULL a apartados t10a, t10b, t10c, t10d, d10a, j10a y p108 ya que no han sido seleccionados
-			// t10
+			// Poner en NULL las preguntas t10a1, t10a2, t10a3, t10a4, t10a5, t10b, t10b5, t10c, todas las t10d (1-11), t10d11otro y j10a
 			$t10a1 = NULL;
 			$t10a2 = NULL;
 			$t10a3 = NULL;
@@ -173,51 +155,67 @@ if(isset($_REQUEST['envio'])) {
 			$t10b  = NULL;
 			$t10b5 = NULL;
 			$t10c  = NULL;
-
-			// Comprobamos valor de variables apartado t10d
-			if(!(empty($_REQUEST['t10d1']))) $encuesta['t10d1']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d2']))) $encuesta['t10d2']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d3']))) $encuesta['t10d3']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d4']))) $encuesta['t10d4']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d5']))) $encuesta['t10d5']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d6']))) $encuesta['t10d6']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d7']))) $encuesta['t10d7']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d8']))) $encuesta['t10d8']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d9']))) $encuesta['t10d9']   = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d10']))) $encuesta['t10d10'] = 1; // Guardamos en el array principal
-			if(!(empty($_REQUEST['t10d11']))) $encuesta['t10d11'] = 1; // Guardamos en el array principal
+			$t10d1 = NULL;
+			$t10d2 = NULL;
+			$t10d3 = NULL;
+			$t10d4 = NULL;
+			$t10d5 = NULL;
+			$t10d6 = NULL;
+			$t10d7 = NULL;
+			$t10d8 = NULL;
+			$t10d9 = NULL;
+			$t10d10 = NULL;
+			$t10d11 = NULL;
 			$t10d11otro = NULL;
-
-			$p108 = NULL;
-
-			$j10a = NULL;
+			$j10a  = NULL;
+		} else if($p10 == 8) { // Otra situación laboral
+			// Poner a NULL todo lo demás t10a, j10a y d10a junto a ramas
+			$t10a1 = NULL;
+			$t10a2 = NULL;
+			$t10a3 = NULL;
+			$t10a4 = NULL;
+			$t10a5 = NULL;
+			$t10b  = NULL;
+			$t10b5 = NULL;
+			$t10c  = NULL;
+			$t10d1 = NULL;
+			$t10d2 = NULL;
+			$t10d3 = NULL;
+			$t10d4 = NULL;
+			$t10d5 = NULL;
+			$t10d6 = NULL;
+			$t10d7 = NULL;
+			$t10d8 = NULL;
+			$t10d9 = NULL;
+			$t10d10 = NULL;
+			$t10d11 = NULL;
+			$t10d11otro = NULL;
+			$j10a  = NULL;
+			$d10a   = NULL;
+			$d10a1  = NULL;
+			$d10a112cual  = NULL;
+			$d10a2  = NULL;
 		}
-
-		// Finalizamos con la variables tipo "s"
-		$s1 = $_REQUEST['s1'];
-		$s2 = $_REQUEST['s2'];
-		$s3 = $_REQUEST['s3'];
-		$s4 = $_REQUEST['s4'];
-		$s5 = $_REQUEST['s5'];
-		$s6 = $_REQUEST['s6'];
-		$s7 = $_REQUEST['s7'];
-		$s8 = $_REQUEST['s8'];
-
-		if($s8 == 2) {
-			$s82 = $_REQUEST['s82'];
-		} else {
-			$s82 = NULL;
-		}
-
-		$s9 = $_REQUEST['s9'];
-
 		
-		$encuesta = array('s101'=>$s101, 's102'=>$s102, 'p1'=>$p1, 'p21'=>$p21, 'p22'=>$p22, 'p23'=>$p23, 'p24'=>$p24, 'p25'=>$p25, 'p26'=>$p26, 'p27'=>$p27, 'p3'=>$p3, 'p4'=>$p4, 'p5'=>$p5, 'p6'=>$p6, 'p7'=>$p7, 'p8'=>$p8, 'p9'=>$p9, 'p9a'=>$p9a, 'p9b'=>$p9b, 'p9c'=>$p9c, 'p10'=>$p10, 'p108'=>$p108, 't10a1'=>$t10a1, 't10a2'=>$t10a2, 't10a3'=>$t10a3, 't10a4'=>$t10a4, 't10a5'=>$t10a5, 't10b'=>$t10b, 't10b5'=>$t10b5, 't10c'=>$t10c, 't10d1'=>$t10d1, 't10d2'=>$t10d2, 't10d3'=>$t10d3, 't10d4'=>$t10d4, 't10d5'=>$t10d5, 't10d6'=>$t10d6, 't10d7'=>$t10d7, 't10d8'=>$t10d8, 't10d9'=>$t10d9, 't10d10'=>$t10d10, 't10d11'=>$t10d11, 't10d11otro'=>$t10d11otro, 'd10a'=>$d10a, 'd10a1'=>$d10a1, 'd10a2'=>$d10a2, 's1'=>$s1, 's2'=>$s2, 's3'=>$s3, 's4'=>$s4, 's5'=>$s5, 's6'=>$s6, 's7'=>$s7, 's8'=>$s8, 's82'=>$s82, 's9'=>$s9);
+		$encuesta = array('direc_ip'=>$direc_ip,'tiempo_realiz'=>$tiempo_realiz,'s101'=>$s101, 's102'=>$s102, 'p1'=>$p1, 'p21'=>$p21, 'p22'=>$p22, 'p23'=>$p23, 'p24'=>$p24, 'p25'=>$p25, 'p26'=>$p26, 'p27'=>$p27, 'p3'=>$p3, 'p4'=>$p4, 'p5'=>$p5, 'p6'=>$p6, 'p7'=>$p7, 'p8'=>$p8, 'p9'=>$p9, 'p9a'=>$p9a, 'p9b'=>$p9b, 'p9c'=>$p9c, 'p10'=>$p10, 'p108'=>$p108, 't10a1'=>$t10a1, 't10a2'=>$t10a2, 't10a3'=>$t10a3, 't10a4'=>$t10a4, 't10a5'=>$t10a5, 't10b'=>$t10b, 't10b5'=>$t10b5, 't10c'=>$t10c, 't10d1'=>$t10d1, 't10d2'=>$t10d2, 't10d3'=>$t10d3, 't10d4'=>$t10d4, 't10d5'=>$t10d5, 't10d6'=>$t10d6, 't10d7'=>$t10d7, 't10d8'=>$t10d8, 't10d9'=>$t10d9, 't10d10'=>$t10d10, 't10d11'=>$t10d11, 't10d11otro'=>$t10d11otro, 'j10a'=>$j10a, 'd10a'=>$d10a, 'd10a1'=>$d10a1, 'd10a112cual'=>$d10a112cual, 'd10a2'=>$d10a2, 's1'=>$s1, 's2'=>$s2, 's3'=>$s3, 's4'=>$s4, 's5'=>$s5, 's6'=>$s6, 's7'=>$s7, 's8'=>$s8, 's82'=>$s82, 's9'=>$s9);
 
 		// revisión del array
-		var_dump($encuesta);
-	}
-} 
+		// var_dump($encuesta); Correcto 27/jul/2017 - 20:22 horas
+
+		// Enviar los datos a la tabla conciliacion de la BBDD de encuestas
+        if(BD::setInsRegConciliacion($encuesta)) {
+        	/**
+            $smarty->assign('mensaje', 'Se ha añadido el ingreso correctamente';
+            header("Location: banca.php");
+            **/
+        } else {
+        	/**
+            $smarty->assign('mensaje', 'No se ha podido hacer el ingreso por algún error');
+            **/
+            echo "Error en la transacción";
+        }
+    }
+}
 ?>
 
 <html>
@@ -1235,10 +1233,9 @@ if(isset($_REQUEST['envio'])) {
 				<!-- P7 -->
 
 				<!-- P8 -->
-				<!-- TO DO controlar campo numerico -->
 				<b>Y, aproximadamente, ¿cuántas horas a la semana dedica Ud. al cuidado de algún miembro de la familia (p. ej. niños, ancianos o personas con discapacidad?</b>
 				<div class="w3-responsive">
-					<input class="w3-input w3-border" type="number" name="p8" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas" value="0">
+					<input class="w3-input w3-border" type="number" name="p8" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas">
 				</div>
 				<br/><br/>
 				<!-- P8 -->
@@ -1268,13 +1265,13 @@ if(isset($_REQUEST['envio'])) {
 							<br/>
 							<b>P9a. Aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja a las tareas domésticas, sin incluir el cuidado de los/as hijos/as ni actividades de ocio?</b>
 							<div class="w3-responsive">
-								<input class="w3-input w3-border" type="text" name="p9a" maxlength="3" value="0">
+								<input class="w3-input w3-border" type="number" name="p9a" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas">
 							</div><br/>
 							<!-- P9a -->
 							<!-- P9b -->
 							<b>P9b. Y, aproximadamente, ¿cuántas horas a la semana dedica su cónyuge/pareja al cuidado de algún miembro de la familia.<br/>(p. ej. niños, ancianos o personas con discapacidad)?</b>
 							<div class="w3-responsive">
-								<input class="w3-input w3-border" type="text" name="p9b" maxlength="3" value="0">
+								<input class="w3-input w3-border" type="number" name="p9b" maxlength="2" pattern="[0-9]*" min="0" max="90" placeholder="Cantidad en horas">
 							</div>
 							<br/>
 							<!-- P9b -->
@@ -1820,7 +1817,7 @@ if(isset($_REQUEST['envio'])) {
 				<div class="w3-container">
 					<ul class="w3-ul">
 						<li>
-							<input class="w3-input w3-border" type="number" name="s2" maxlength="2" pattern="[0-9]*" min="18" max="99" placeholder="Insertar la Edad" value="0">
+							<input class="w3-input w3-border" type="number" name="s2" maxlength="2" pattern="[0-9]*" min="18" max="99" placeholder="Insertar la Edad">
 						</li>
 					</ul>
 				</div><br/>
@@ -1863,7 +1860,7 @@ if(isset($_REQUEST['envio'])) {
 				<div class="w3-container">
 					<ul class="w3-ul">
 						<li>
-							<input class="w3-input w3-border" type="number" name="s4" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de personas" value="0">
+							<input class="w3-input w3-border" type="number" name="s4" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de personas">
 						</li>
 					</ul>
 				</div><br/>
@@ -1874,8 +1871,7 @@ if(isset($_REQUEST['envio'])) {
 				<div class="w3-container">
 					<ul class="w3-ul">
 						<li>
-							<!-- TO DO Cuadro desplegable desde 0 hasta 9 o más -->
-							<input class="w3-input w3-border" type="text" name="s5" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de hijos a su cargo" value="0">
+							<input class="w3-input w3-border" type="number" name="s5" maxlength="2" pattern="[0-9]*" min="0" max="20" placeholder="Número de hijos a su cargo">
 						</li>
 					</ul>
 				</div><br/>

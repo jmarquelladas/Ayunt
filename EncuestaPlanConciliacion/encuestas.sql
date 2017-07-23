@@ -8231,8 +8231,8 @@ INSERT INTO munic (`codmunine`, `codmunotro`, `codprov`,`nommunicipio`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS conciliacion (
-	codentrada INT(6) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria para tabla CONCILIACION',
-	fecha_encuesta DATETIME DEFAULT CURRENT_TIMESTAMP,
+	codentrada INT(6) NOT NULL AUTO_INCREMENT COMMENT 'Clave primaria para tabla CONCILIACION', /* Dá un número automáticamente como clave primaria */
+	fecha_encuesta DATETIME DEFAULT CURRENT_TIMESTAMP, /* Coge automáticamente en el alta la fecha del servidor */
 	direc_ip VARCHAR(15) COMMENT 'Dirección IP desde donde se realiza la encuesta',
 	tiempo_realiz DATETIME COMMENT 'Tiempo en realizar la encuesta',
 	s101 VARCHAR(50) COMMENT 'Provincia de residencia del encuestado',
@@ -8263,7 +8263,7 @@ CREATE TABLE IF NOT EXISTS conciliacion (
 	t10a4 VARCHAR(2) COMMENT 'Ha tenido dificultades para concentrarse en su trabajo, debido a sus responsabilidades familiares.',
 	t10a5 VARCHAR(2) COMMENT 'Le ha resultado difícil poder realizar sus aficiones, (deporte, cine, lectura, quedar con amigos/as…) debido al tiempo que había dedicado a su trabajo o responsabilidades familiares',
 	t10b VARCHAR(2) COMMENT '¿Qué tipo de jornada laboral tiene?',
-	t10b5 VARCHAR(2) COMMENT 'Otra... ¿Cuál?',
+	t10b5 VARCHAR(25) COMMENT 'Otra... ¿Cuál?',
 	t10c VARCHAR(2) COMMENT '¿Qué tipo de trabajo tiene?',
 	t10d1 VARCHAR(2) COMMENT 'Ayudas para la vivienda',
 	t10d2 VARCHAR(2) COMMENT 'Planes de pensiones o complementos de pensiones',
@@ -8276,10 +8276,11 @@ CREATE TABLE IF NOT EXISTS conciliacion (
 	t10d9 VARCHAR(2) COMMENT 'Ofertas de ocio',
 	t10d10 VARCHAR(2) COMMENT 'Flexibilidad horaria',
 	t10d11 VARCHAR(2) COMMENT 'Algún otro tipo de servicio social. ¿Cuál?',
-	t10d1otro VARCHAR(2) COMMENT 'Otro... ¿Cuál?',
+	t10d11otro VARCHAR(25) COMMENT 'Otro... ¿Cuál?',
 	j10a VARCHAR(2) COMMENT '¿Podría decirme en qué medida se siente Ud. necesario para que su familia más próxima pueda conciliar la vida laboral, familiar y personal? Para responder utilice una escala de 0 a 10 donde el 0 significa que está “completamente innecesario/a” y el 10 que está “completamente necesario/a”',
 	d10a VARCHAR(2) COMMENT 'Pensando en las cuatro últimas semanas, ¿ha tratado de encontrar algún empleo?',
 	d10a1 VARCHAR(2) COMMENT '¿Cuál es el PRINCIPAL MOTIVO por el que no ha tratado de buscar empleo en las últimas semanas?',
+	d10a112 VARCHAR(25) COMMENT 'Otra... ¿Cuál?',
 	d10a2 VARCHAR(2) COMMENT 'Más concretamente, dígame si el motivo de no buscar empleo es alguno de los siguientes:',
 	s1 VARCHAR(2) COMMENT '¿Cuál es su sexo?',
 	s2 VARCHAR(2) COMMENT '¿Podría indicarme cuál es su edad?',
@@ -8289,7 +8290,7 @@ CREATE TABLE IF NOT EXISTS conciliacion (
 	s6 VARCHAR(2) COMMENT '¿Cuántas personas dependientes tiene usted a su cargo? (no puede valerse por sí misma y necesita asistencia de alguien o de algo)',
 	s7 VARCHAR(2) COMMENT '¿Podría indicarme qué nivel de estudios terminados tiene Ud.? ',
 	s8 VARCHAR(2) COMMENT '¿Le importaría decirme cuál es su nacionalidad?',
-	s82 VARCHAR(2) COMMENT 'Otra... ¿Cuál?',
+	s82 VARCHAR(25) COMMENT 'Otra... ¿Cuál?',
 	s9 VARCHAR(2) COMMENT 'Podría decirme, por último, ¿Cuáles son los ingresos netos que entran en su hogar al mes por todos los conceptos? (Es decir, incluyendo lo que aportan todos los miembros del hogar)',
 
 	CONSTRAINT con_cod_PK PRIMARY KEY (codentrada)
