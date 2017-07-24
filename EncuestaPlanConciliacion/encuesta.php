@@ -17,9 +17,12 @@ include 'funciones.inc.php';
 
 // Realizamos la carga de las clases
 require_once('BD.php');
+require_once ('./include/xajax_core/xajax.inc.php');
 
 // Configuramos la zona horaria
 date_default_timezone_set('Europe/Madrid');
+
+function 
 
 // Se ha enviado el formulario de la encuesta
 if(isset($_REQUEST['envio'])) {
@@ -216,18 +219,34 @@ if(isset($_REQUEST['envio'])) {
         }
     }
 }
+
+
+// Configuración Xajax
+$xajax = new xajax(); // Creamos el objeto
+
+// Registramos las funciones PHP del servidor para poner a disposicion y poder ejecutarse de forma síncrona desde el navegador.
+$xajax->register(XAJAX_FUNCTION, '');
+// ...
+// Configuramos ruta acceso a carpeta xajax_js
+$xajax->configure('javascript URI', './include/');
+
+// Por último procesamos las llamadas a las funciones
+// Hay que tener en cuenta que la llamada a processRequest debe realizarse 
+// antes de que el guión PHP genere ningún tipo de salida.
+$xajax->processRequest();// Creamos el objeto xajax
 ?>
+
 
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Plan de Conciliación de la vida personal y laboral</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="estilo-aytohv.css">
+	<link rel="stylesheet" href="./include/estilo-aytohv.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
-
+    <?php $xajax->printJavascript(); // Enviamos el código JavaScript ?>
 	<script type="text/javascript">
 	// JQuery para mostrar o ocultar preguntas del formulario
 	$(document).ready(function(){
@@ -395,7 +414,7 @@ if(isset($_REQUEST['envio'])) {
 				<!-- S10.1 -->
 				<b>¿En qué provincia reside habitualmente usted?</b>
 				<div class="w3-responsive">
-					<select class="w3-select w3-border" name="s101">
+					<select id="provincia" class="w3-select w3-border" name="s101" onChange="cambiarMunicipios();">
 						<option value='Granada'>Granada</option>
 						<option value='Álava/Araba'>Álava/Araba</option>
 						<option value='Albacete'>Albacete</option>
