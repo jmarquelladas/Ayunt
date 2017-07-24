@@ -1,0 +1,18 @@
+header{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding: 1px 30px 1px 30px;
+	background-color:grey;
+}
+
+section{
+	padding: 1px 10px 1px 10px;
+	background-color:grey;
+	font-family: 'Share Tech Mono', monospace;
+    font-size: 0.3em; 
+}
+
+svg{
+  display: block;
+  margin: auto;
+}
