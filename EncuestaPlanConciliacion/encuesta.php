@@ -22,8 +22,6 @@ require_once ('./include/xajax_core/xajax.inc.php');
 // Configuramos la zona horaria
 date_default_timezone_set('Europe/Madrid');
 
-function 
-
 // Se ha enviado el formulario de la encuesta
 if(isset($_REQUEST['envio'])) {
 	$envio = $_REQUEST['envio'];
@@ -402,6 +400,13 @@ $xajax->processRequest();// Creamos el objeto xajax
 
 			<!-- Pestaña 1 - Inicio -->
 			<div id="inicio" class="w3-container opc" style="display: block">
+				<div id="bienvenida" class="w3-panel w3-light-green w3-round w3-padding w3-center">
+					<h3>Buenos días/tardes:</h3>
+					<p>El Ayuntamiento de Huétor Vega está llevando a cabo un proyecto para crear un Plan de conciliación de la vida personal, laboral y familiar.<br/>Para ello se están realizando entrevistas a personas seleccionadas al azar, residentes en Huétor Vega. <br/><b>La entrevista es completamente anónima.</b><br/>Por favor señale su respuesta y recuerde que no existen contestaciones buenas o malas.<br/>Nos interesa conocer su opinión y le agradecemos su colaboración.</p>
+				</div>
+				<div id="avisoLegal" class="w3-panel w3-yellow w3-round w3-padding w3-center">
+					<sub>La información obtenida en esta encuesta está protegida por la Ley 12/89 que regula el secreto estadístico para las administraciones públicas, no pudiéndose tratar ni difundir más que de forma numérica y agregada, para garantizar el anonimato de los entrevistados.</sub>
+				</div>
 				<br/>
 				<div class="w3-panel w3-pale-yellow">
 					<h3>Lugar de residencia habitual</h3>
@@ -2131,7 +2136,8 @@ $xajax->processRequest();// Creamos el objeto xajax
 			document.getElementById('gracias').style.display = "none";
 			document.getElementById('enviando').style.display = "block";
 			document.formEncConcilia.submit();
-			// setTimeout("redireccionarPortal()" , 2000);
+			setTimeout("redireccionarPortal()" , 2000);
+			
 		}
 		// Mostrar el documento desde el principio o desde arriba
 		$('html, body').animate({scrollTop: $('#principal').offset().top},200);
