@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Descripción: Ejemplo de pagina html y Ajax para web dinámica con petición asíncrona a archivo php
+Versión: Fecha: 1.0 
+Fecha: 31/07/2017
+Autor: José Miguel Arquelladas
+Email: jmaruiz@gmail.com
+Twitter: @jmarquelladas
+-->
+
+<!--
+Ejemplo de web dinámica con petición asíncrona utilizando PHP y Ajax
+Pasos a seguir:
+	1- Se crea la funcion Ajax que realiza la funcion especificada ERS para intercambiar los datos con el servidor. En este ejemplo se revisa una cadena de texto en un input y sugiere el nombre o los nombres.
+		1.1- Dentro de la función se crea el objeto Ajax XMLHttpRequest para intercambiar datos con el servidor PHP
+		1.2- Con el método onreadystatechange se controla si la respuesta del servidor esta lista
+		1.3- Si la respuesta es TRUE realizamos los cambios necesarios en la página
+		1.4- Después del control onreadystatechange se hace la llamada al fichero PHP y se envía
+	2- Dentro del campo <input> hacemos la llamada a la funcion Ajax, en este caso cada vez que se pulsa una tecla.
+	3- El archivo PHP realizará todas las operaciones necesarias que nos deba de enviar el servidor y que son pedidas desde la funcion Ajax.
+-->
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ejemplo Ajax y PHP</title>
+<script type="text/javascript">
+function muestraSugerencia(cadena) {
+	if(cadena.length == 0) { // Comprobamos si la cadena está vacía
+		document.getElementById('txtSugerido').innerHTML = ""; // Dejamos vacío el contenido de la etiqueta
+		return; // y salimos de la funcion
+	} else { // La cadena tiene valor
+		var xmlhttp = new XMLHttpRequest(); // Creamos objeto para intercambiar datos con el servidor. Se utiliza para intercambiar datos con un servidor en segundo plano para actualizar partes de la página web sin necesidad de recargar la página entera.
+		xmlhttp.onreadystatechange = function() { // Método que se ejecuta cuando la respuesta del servidor está lista
+			if(this.readyState == 4 && this.status == 200) { // Comprueba que la solicitud ha finalizado (4) y que la respuesta esta lista (200)
+				document.getElementById("txtSugerido").innerHTML = this.responseText; // Devuelve los datos de respuesta como una cadena
+			}
+		};
+		xmlhttp.open("GET", "sugerencias.php?q=" + cadena, true); // Envía la solicitud GET al archivo PHP en el servidor
+		// Observar que el parámetro q se agrega a la url
+		xmlhttp.send(); // Se envía la solicitud GET al servidor
+	}
+}
+</script>
+</head>
+<body>
+<h3>Teclea las letras de un nombre en el campo siguiente:</h3>
+<form>
+	Nombre: <input type="text" onkeyup="muestraSugerencia(this.value)">
+</form>
+<p>Sugerencia: <span id="txtSugerido"></span></p>
+</body>
+</html>

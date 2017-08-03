@@ -22,7 +22,27 @@ require_once ('./include/xajax_core/xajax.inc.php');
 // Configuramos la zona horaria
 date_default_timezone_set('Europe/Madrid');
 
-function 
+/**
+ *
+ *
+ */
+function mostrarMunicipios($prov) {
+
+}
+
+// Configuración Xajax
+$xajax = new xajax(); // Creamos el objeto
+
+// Registramos las funciones PHP del servidor para poner a disposicion y poder ejecutarse de forma síncrona desde el navegador.
+$xajax->register(XAJAX_FUNCTION, 'mostrarMunicipios');
+// ...
+// Configuramos ruta acceso a carpeta xajax_js
+$xajax->configure('javascript URI', './include/');
+
+// Por último procesamos las llamadas a las funciones
+// Hay que tener en cuenta que la llamada a processRequest debe realizarse 
+// antes de que el guión PHP genere ningún tipo de salida.
+$xajax->processRequest();// Creamos el objeto xajax
 
 // Se ha enviado el formulario de la encuesta
 if(isset($_REQUEST['envio'])) {
@@ -220,20 +240,6 @@ if(isset($_REQUEST['envio'])) {
     }
 }
 
-
-// Configuración Xajax
-$xajax = new xajax(); // Creamos el objeto
-
-// Registramos las funciones PHP del servidor para poner a disposicion y poder ejecutarse de forma síncrona desde el navegador.
-$xajax->register(XAJAX_FUNCTION, '');
-// ...
-// Configuramos ruta acceso a carpeta xajax_js
-$xajax->configure('javascript URI', './include/');
-
-// Por último procesamos las llamadas a las funciones
-// Hay que tener en cuenta que la llamada a processRequest debe realizarse 
-// antes de que el guión PHP genere ningún tipo de salida.
-$xajax->processRequest();// Creamos el objeto xajax
 ?>
 
 
